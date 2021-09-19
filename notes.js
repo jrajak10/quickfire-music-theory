@@ -68,8 +68,23 @@ function hideStartButton(id){
 
 }
 
+function startTimer(){
+    let sec = 60;
+    let timer = setInterval(function(){
+        sec--;
+        document.getElementById('timer').innerHTML = sec;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+       
+    }, 1000);
+}
+
 function clickStartButton() {
     let notesArray = ['C.png', 'E.png', 'G.png'];
+
+    document.getElementById('timer').innerHTML = 60
+    startTimer()
     
     document.getElementById("score-panel").innerHTML = "Score: 0" 
     randomNote(notesArray);

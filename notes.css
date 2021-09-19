@@ -17,3 +17,11 @@ width: 50px;
     width: 70px;
    padding: 10px 10px;
 }
+
+#timer {
+    border: solid 2px #000;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    padding: 5px 5px;
+}
