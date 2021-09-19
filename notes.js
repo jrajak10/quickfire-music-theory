@@ -30,6 +30,14 @@ function changeImage(notesArray){
     }
 }
 
+function countScore(id, totalScore){
+
+    if(id === 'tick-button'){
+        totalScore++
+        return document.getElementById("score-panel").innerHTML = totalScore
+    }
+}
+
 
 function createButton(id, text, notesArray) {
     let newButton = document.createElement("BUTTON");
@@ -37,8 +45,16 @@ function createButton(id, text, notesArray) {
     newButton.setAttribute("id", id);
     newButton.setAttribute("height", "80");
     newButton.setAttribute("width", "100");
+
+    let totalScore = 0
     newButton.onclick = function(){
+        if(id === 'tick-button'){
+            totalScore++
+            document.getElementById("score-panel").innerHTML = "Score: " + totalScore
+        }   
+
         changeImage(notesArray);
+
     }
     
     document.getElementById("buttons").appendChild(newButton);
