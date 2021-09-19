@@ -48,6 +48,8 @@ function createButton(id, text, notesArray) {
 
     let totalScore = 0
     newButton.onclick = function(){
+        
+
         if(id === 'tick-button'){
             totalScore++
             document.getElementById("score-panel").innerHTML = "Score: " + totalScore
@@ -69,7 +71,7 @@ function hideStartButton(id){
 function clickStartButton() {
     let notesArray = ['C.png', 'E.png', 'G.png'];
     
-
+    document.getElementById("score-panel").innerHTML = "Score: 0" 
     randomNote(notesArray);
     hideStartButton("start-button");
 
