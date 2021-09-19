@@ -9,3 +9,11 @@ width: 50px;
 #cross-button {
     width: 50px;
     }
+
+
+#score-panel{
+    border: solid 3px #000;
+    height: 50px;
+    width: 70px;
+   padding: 10px 10px;
+}
