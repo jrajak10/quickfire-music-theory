@@ -90,8 +90,9 @@ function endTimer(sec, timer){
         returnScore(scorePanel);
     }
 }
+
 function startTimer() {
-    let sec = 6;
+    let sec = 60;
     let timer = setInterval(function () {
         sec--;
         document.getElementById('timer').innerHTML = sec;
