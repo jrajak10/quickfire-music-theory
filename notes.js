@@ -10,7 +10,7 @@ function randomNote(notesArray) {
 function createImage(notesArray) {
     let newImage = document.createElement("IMG");
     newImage.setAttribute("src", randomNote(notesArray));
-    newImage.setAttribute("id", "note");
+    newImage.setAttribute("id", "note-image");
     newImage.setAttribute("height", "250");
     newImage.setAttribute("width", "250");
     newImage.setAttribute("alt", "Note");
@@ -22,7 +22,7 @@ function changeImage(notesArray) {
         createImage(notesArray);
     }
     else {
-        let note = document.getElementById("note")
+        let note = document.getElementById("note-image")
         note.parentNode.removeChild(note);
         createImage(notesArray);
     }
@@ -30,13 +30,14 @@ function changeImage(notesArray) {
 
 function countScore(totalScore) {
 
+
     if (id === 'tick-button') {
         totalScore++
         document.getElementById("score-panel").innerHTML = totalScore
     }
 }
 
-function clickNewButton(newButton, id, totalScore, notesArray){
+function clickNewButton(newButton, id, totalScore, notesArray) {
     newButton.onclick = function () {
         if (id === 'tick-button') {
             totalScore++
@@ -75,13 +76,13 @@ function styleTimer(id) {
     timerStyle.padding = "5px";
 }
 
-function returnScore(scorePanel){
+function returnScore(scorePanel) {
     let score = scorePanel.split(' ')[1]
     document.getElementById('page').innerHTML = "TIME\'S UP!!! You scored " + score + "!";
 }
 
 
-function endTimer(sec, timer){
+function endTimer(sec, timer) {
     if (sec <= 0) {
         clearInterval(timer);
         let scorePanel = document.getElementById("score-panel").innerHTML
@@ -96,13 +97,13 @@ function startTimer() {
         document.getElementById('timer').innerHTML = sec;
         styleTimer('timer');
 
-    endTimer(sec, timer);
+        endTimer(sec, timer);
 
     }, 1000);
 }
 
 
-function updateScorePanel(id){
+function updateScorePanel(id) {
     let scorePanel = document.getElementById(id);
     scorePanel.innerHTML = "Score: 0";
     scorePanel.style.border = "solid 3px #000";
@@ -112,7 +113,12 @@ function updateScorePanel(id){
 }
 
 function clickStartButton() {
-    let notesArray = ['C.png', 'E.png', 'G.png'];
+    let notesArray = ["Notes/Treble C4.png", "Notes/Treble D4.png", "Notes/Treble E4.png", "Notes/Treble F4.png",
+        "Notes/Treble G4.png", "Notes/Treble A4.png", "Notes/Treble B4.png", "Notes/Treble C5.png",
+        "Notes/Treble D5.png", "Notes/Treble E5.png", "Notes/Treble F5.png","Notes/Treble G5.png", "Notes/Treble A5.png", 
+        "Notes/Bass E2.png", "Notes/Bass F2.png", "Notes/Bass G2.png", "Notes/Bass A2.png", "Notes/Bass B2.png", 
+        "Notes/Bass C3.png", "Notes/Bass D3.png", "Notes/Bass E3.png", "Notes/Bass F3.png", "Notes/Bass G3.png", 
+        "Notes/Bass A3.png", "Notes/Bass B3.png", "Notes/Bass C4.png"];
 
     document.getElementById('timer').innerHTML = 60
     styleTimer('timer');
