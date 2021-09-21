@@ -1,11 +1,9 @@
 
 
 function randomNote(notesArray) {
-    let randomNum;
-    for (let i = 0; i < notesArray.length; i++) {
-        randomNum = Math.floor(Math.random(i) * notesArray.length)
-    }
-    return notesArray[randomNum]
+    let notesArrayLength = notesArray.length;
+    let randomIndex = Math.floor(Math.random() * notesArrayLength)
+    return notesArray[randomIndex]
 }
 
 
@@ -105,7 +103,7 @@ function startTimer() {
 
 
 function updateScorePanel(id){
-    let scorePanel = document.getElementById("score-panel");
+    let scorePanel = document.getElementById(id);
     scorePanel.innerHTML = "Score: 0";
     scorePanel.style.border = "solid 3px #000";
     scorePanel.style.height = "50px";
