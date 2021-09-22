@@ -50,8 +50,6 @@ function createButton(id, text, notesArray) {
     let newButton = document.createElement("BUTTON");
     newButton.innerHTML = text;
     newButton.setAttribute("id", id);
-    newButton.setAttribute("height", "80");
-    newButton.setAttribute("width", "100");
 
     let totalScore = 0
     clickNewButton(newButton, id, totalScore, notesArray)
@@ -128,7 +126,7 @@ function updateScorePanel(id) {
 function addButtonsAndImage(notesArray) {
     if (document.getElementById("image").childNodes.length <= 1) {
         createImage(notesArray);
-        createButton('tick-button', "&#9989", notesArray);
+        createButton('tick-button', "&#10003", notesArray);
         createButton('cross-button', "&#10060", notesArray);
     }
 }
