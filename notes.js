@@ -29,8 +29,6 @@ function changeImage(notesArray) {
 }
 
 function countScore(totalScore) {
-
-
     if (id === 'tick-button') {
         totalScore++
         document.getElementById("score-panel").innerHTML = totalScore
@@ -78,20 +76,35 @@ function styleTimer(id) {
 
 function returnScore(scorePanel) {
     let score = scorePanel.split(' ')[1]
-    document.getElementById('page').innerHTML = "TIME\'S UP!!! You scored " + score + "!";
+    document.getElementById('result-page').style.display = "block";
+    document.getElementById('result-page').innerHTML = "TIME\'S UP!!! You scored " + score + "!<br>";
+    document.getElementById('hidden-endtimer-features').style.display = "none";
 }
 
+function createTryAgainButton(tryAgainButton) {
+    tryAgainButton.innerHTML = "Try Again";
+    tryAgainButton.setAttribute("id", "try-again-button");
+    tryAgainButton.setAttribute("height", "80");
+    tryAgainButton.setAttribute("width", "100");
+    tryAgainButton.onclick = function () {
+        location.reload()
+    }
+    document.getElementById('result-page').appendChild(tryAgainButton);
+}
 
 function endTimer(sec, timer) {
     if (sec <= 0) {
         clearInterval(timer);
+
         let scorePanel = document.getElementById("score-panel").innerHTML
         returnScore(scorePanel);
+        let tryAgainButton = document.createElement("BUTTON");
+        createTryAgainButton(tryAgainButton)
     }
 }
 
 function startTimer() {
-    let sec = 60;
+    let sec = 30;
     let timer = setInterval(function () {
         sec--;
         document.getElementById('timer').innerHTML = sec;
@@ -112,30 +125,30 @@ function updateScorePanel(id) {
     scorePanel.style.padding = "10px 10px";
 }
 
-function clickStartButton() {
-    let notesArray = ["Notes/Treble C4.png", "Notes/Treble D4.png", "Notes/Treble E4.png", "Notes/Treble F4.png",
-        "Notes/Treble G4.png", "Notes/Treble A4.png", "Notes/Treble B4.png", "Notes/Treble C5.png",
-        "Notes/Treble D5.png", "Notes/Treble E5.png", "Notes/Treble F5.png","Notes/Treble G5.png", "Notes/Treble A5.png", 
-        "Notes/Bass E2.png", "Notes/Bass F2.png", "Notes/Bass G2.png", "Notes/Bass A2.png", "Notes/Bass B2.png", 
-        "Notes/Bass C3.png", "Notes/Bass D3.png", "Notes/Bass E3.png", "Notes/Bass F3.png", "Notes/Bass G3.png", 
-        "Notes/Bass A3.png", "Notes/Bass B3.png", "Notes/Bass C4.png"];
-
-    document.getElementById('timer').innerHTML = 60
-    styleTimer('timer');
-    startTimer()
-
-    updateScorePanel('score-panel')
-    randomNote(notesArray);
-    hideStartButton("start-button");
-
+function addButtonsAndImage(notesArray) {
     if (document.getElementById("image").childNodes.length <= 1) {
         createImage(notesArray);
         createButton('tick-button', "&#9989", notesArray);
         createButton('cross-button', "&#10060", notesArray);
     }
-    else {
-        let note = document.getElementById("note")
-        note.parentNode.removeChild(note);
-        createImage(notesArray);
-    }
+}
+
+function clickStartButton() {
+    let notesArray = ["Notes/Treble C4.png", "Notes/Treble D4.png", "Notes/Treble E4.png", "Notes/Treble F4.png",
+        "Notes/Treble G4.png", "Notes/Treble A4.png", "Notes/Treble B4.png", "Notes/Treble C5.png",
+        "Notes/Treble D5.png", "Notes/Treble E5.png", "Notes/Treble F5.png", "Notes/Treble G5.png", "Notes/Treble A5.png",
+        "Notes/Bass E2.png", "Notes/Bass F2.png", "Notes/Bass G2.png", "Notes/Bass A2.png", "Notes/Bass B2.png",
+        "Notes/Bass C3.png", "Notes/Bass D3.png", "Notes/Bass E3.png", "Notes/Bass F3.png", "Notes/Bass G3.png",
+        "Notes/Bass A3.png", "Notes/Bass B3.png", "Notes/Bass C4.png"];
+
+    document.getElementById('timer').innerHTML = 60
+    styleTimer('timer');
+    startTimer();
+
+    updateScorePanel('score-panel');
+    randomNote(notesArray);
+    hideStartButton("start-button");
+    addButtonsAndImage(notesArray);
+    document.getElementById('hidden-endtimer-features').style.display = "block";
+    
 }
