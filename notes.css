@@ -1,15 +1,43 @@
 #start-button{
-    width: 100px;
+    width: 150px;
+    padding: 10px;
 }
 
 #tick-button {
-width: 50px;
+    height: 35px;
+    width: 64px;
+    color: #228B22;
+    font-size: 18px;
 }
 
 #cross-button {
-    width: 50px;
+    height: 35px;
+    width: 64px;
     }
+
+#try-again-button{
+margin: 20px;
+ height: 40px;
+ width: 100px;
+ padding: 10px;   
+}
 
 #note-image{
     border: solid 2px #000;
+}
+
+#result-page{
+    text-align: center;
+}
+
+#buttons{
+    text-align: center;
+    padding: 1rem;
+}
+
+button{
+    background-color: #d9dae4;
+    border-radius: 5px;
+    border: solid 2px #000;
+    margin: 5px 15px;
 }
