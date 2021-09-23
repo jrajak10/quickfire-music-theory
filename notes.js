@@ -11,8 +11,6 @@ function createImage(notesArray) {
     let newImage = document.createElement("IMG");
     newImage.setAttribute("src", randomNote(notesArray));
     newImage.setAttribute("id", "note-image");
-    newImage.setAttribute("height", "250");
-    newImage.setAttribute("width", "250");
     newImage.setAttribute("alt", "Note");
     document.getElementById("image").appendChild(newImage);
 }
