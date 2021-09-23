@@ -1,3 +1,7 @@
+#quickfire-round-features{
+    text-align:center;
+}
+
 #start-button{
     width: 150px;
     padding: 10px;
@@ -23,7 +27,9 @@ margin: 20px;
 }
 
 #note-image{
-    border: solid 2px #000;
+    border: solid 4px #000;
+    height: 180px;
+    width: 180px;
 }
 
 #result-page{
