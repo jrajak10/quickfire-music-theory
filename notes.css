@@ -1,7 +1,3 @@
-#quickfire-round-features{
-    text-align: center;
-}
-
 #start-button{
     width: 150px;
     padding: 10px;
@@ -26,6 +22,9 @@ margin: 20px;
  padding: 10px;   
 }
 
+#note-image{
+    border: solid 2px #000;
+}
 
 #result-page{
     text-align: center;
@@ -34,7 +33,6 @@ margin: 20px;
 #buttons{
     text-align: center;
     padding: 1rem;
-
 }
 
 button{
@@ -42,13 +40,10 @@ button{
     border-radius: 5px;
     border: solid 2px #000;
     margin: 5px 15px;
+    
+    
 }
 
-#note-image{
-    border: solid 4px #000;
-    height: 180px;
-    width: 180px;
-}
 
 @media (min-width: 768px){
     button:hover{
