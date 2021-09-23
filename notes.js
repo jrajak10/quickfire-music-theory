@@ -55,6 +55,7 @@ function createButton(id, text, notesArray) {
     document.getElementById("buttons").appendChild(newButton);
 }
 
+
 function hideStartButton(id) {
     let startButton = document.getElementById(id)
     startButton.parentNode.removeChild(startButton);
