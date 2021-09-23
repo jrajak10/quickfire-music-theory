@@ -4,15 +4,15 @@
 }
 
 #tick-button {
-    height: 35px;
-    width: 64px;
+    height: 40px;
+    width: 68px;
     color: #228B22;
     font-size: 18px;
 }
 
 #cross-button {
-    height: 35px;
-    width: 64px;
+    height: 40px;
+    width: 68px;
     }
 
 #try-again-button{
@@ -40,4 +40,19 @@ button{
     border-radius: 5px;
     border: solid 2px #000;
     margin: 5px 15px;
+    
+    
+}
+
+
+@media (min-width: 768px){
+    button:hover{
+        border-width: 3px;
+        cursor: pointer;
+    }
+}
+
+
+button:active{
+    background-color: #9093b0;
 }
