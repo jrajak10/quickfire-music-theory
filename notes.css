@@ -26,10 +26,31 @@ margin: 20px;
  padding: 10px;   
 }
 
+#image{
+    margin-top: 120px;
+    margin-bottom: 30px;
+}
+
 #note-image{
     border: solid 4px #000;
     height: 180px;
     width: 180px;
+}
+
+#score-panel{
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    background-color: #8c0020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+#score{
+    color: #3fe0d0;
+    font-size: 20px;
 }
 
 #result-page{
@@ -46,19 +67,21 @@ button{
     border-radius: 5px;
     border: solid 2px #000;
     margin: 5px 15px;
-    
-    
 }
 
+
+
+
+
+button:active{
+    background-color: #9093b0;
+}
 
 @media (min-width: 768px){
     button:hover{
         border-width: 3px;
         cursor: pointer;
     }
-}
 
 
-button:active{
-    background-color: #9093b0;
 }
