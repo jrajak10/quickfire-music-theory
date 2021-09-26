@@ -26,22 +26,14 @@ function changeImage(notesArray) {
     }
 }
 
-function countScore(totalScore) {
-    if (id === 'tick-button') {
-        totalScore++
-        document.getElementById("score-panel").innerHTML = totalScore
-    }
-}
-
 function clickNewButton(newButton, id, totalScore, notesArray) {
     newButton.onclick = function () {
         if (id === 'tick-button') {
             totalScore++
-            document.getElementById("score-panel").innerHTML = "Score: " + totalScore
+            document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
         }
         changeImage(notesArray);
     }
-
 }
 
 function createButton(id, text, notesArray) {
@@ -71,7 +63,7 @@ function styleTimer(id) {
 }
 
 function returnScore(scorePanel) {
-    let score = scorePanel.split(' ')[1]
+    let score = scorePanel.replace("<p id=\"score\">Score: ", "").replace("</p>", "");
     document.getElementById('result-page').style.display = "block";
     document.getElementById('result-page').innerHTML = "TIME\'S UP!!! You scored " + score + "!<br>";
     document.getElementById('hidden-endtimer-features').style.display = "none";
@@ -114,10 +106,10 @@ function startTimer() {
 
 function updateScorePanel(id) {
     let scorePanel = document.getElementById(id);
-    scorePanel.innerHTML = "Score: 0";
+    scorePanel.innerHTML = "<p id=\"score\">Score: 0</p>";
     scorePanel.style.border = "solid 3px #000";
     scorePanel.style.height = "50px";
-    scorePanel.style.width = "70px";
+    scorePanel.style.width = "80px";
     scorePanel.style.padding = "10px 10px";
 }
 
