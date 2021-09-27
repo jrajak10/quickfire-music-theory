@@ -55,10 +55,8 @@ function hideStartButton(id) {
 
 function styleTimer(id) {
     let timerStyle = document.getElementById(id).style;
-    timerStyle.border = "solid 2px #000";
+    timerStyle.border = "solid 5px #000";
     timerStyle.borderRadius = "50%";
-    timerStyle.maxHeight = "25px";
-    timerStyle.maxWidth = "25px";
     timerStyle.padding = "5px";
 }
 
@@ -80,10 +78,22 @@ function createTryAgainButton(tryAgainButton) {
     document.getElementById('result-page').appendChild(tryAgainButton);
 }
 
+function tenSecondsRemaining(sec){
+    if (sec <= 10) {
+        document.getElementById("timer").style.color = "#c2002d";
+        document.getElementById("timer").style.borderColor = "#c2002d";
+    }
+}0
+
+function styleEndTimer(id){
+    document.getElementById(id).style.marginLeft = "auto";
+    document.getElementById(id).style.marginRight = "auto";
+}
+
 function endTimer(sec, timer) {
     if (sec <= 0) {
         clearInterval(timer);
-
+        styleEndTimer("timer");
         let scorePanel = document.getElementById("score-panel").innerHTML
         returnScore(scorePanel);
         let tryAgainButton = document.createElement("BUTTON");
@@ -98,6 +108,7 @@ function startTimer() {
         document.getElementById('timer').innerHTML = sec;
         styleTimer('timer');
 
+        tenSecondsRemaining(sec);
         endTimer(sec, timer);
 
     }, 1000);
@@ -129,7 +140,7 @@ function clickStartButton() {
         "Notes/Bass C3.png", "Notes/Bass D3.png", "Notes/Bass E3.png", "Notes/Bass F3.png", "Notes/Bass G3.png",
         "Notes/Bass A3.png", "Notes/Bass B3.png", "Notes/Bass C4.png"];
 
-    document.getElementById('timer').innerHTML = 60
+    document.getElementById('timer').innerHTML = 30
     styleTimer('timer');
     startTimer();
 
