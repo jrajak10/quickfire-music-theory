@@ -55,7 +55,7 @@ function hideStartButton(id) {
 
 function styleTimer(id) {
     let timerStyle = document.getElementById(id).style;
-    timerStyle.border = "solid 5px #000";
+    timerStyle.border = "solid 5px #0F1108";
     timerStyle.borderRadius = "50%";
     timerStyle.padding = "5px";
 }
