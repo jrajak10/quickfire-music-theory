@@ -55,7 +55,7 @@ function hideStartButton(id) {
 
 function styleTimer(id) {
     let timerStyle = document.getElementById(id).style;
-    timerStyle.border = "solid 5px #0F1108";
+    timerStyle.border = "solid 5px #0D0628";
     timerStyle.borderRadius = "50%";
     timerStyle.padding = "5px";
 }
@@ -78,14 +78,14 @@ function createTryAgainButton(tryAgainButton) {
     document.getElementById('result-page').appendChild(tryAgainButton);
 }
 
-function tenSecondsRemaining(sec){
+function tenSecondsRemaining(sec) {
     if (sec <= 10) {
         document.getElementById("timer").style.color = "#c2002d";
         document.getElementById("timer").style.borderColor = "#c2002d";
     }
-}0
+} 0
 
-function styleEndTimer(id){
+function styleEndTimer(id) {
     document.getElementById(id).style.marginLeft = "auto";
     document.getElementById(id).style.marginRight = "auto";
 }
@@ -118,7 +118,7 @@ function startTimer() {
 function updateScorePanel(id) {
     let scorePanel = document.getElementById(id);
     scorePanel.innerHTML = "<p id=\"score\">Score: 0</p>";
-    scorePanel.style.border = "solid 3px #000";
+    scorePanel.style.border = "solid 3px #0D0628";
     scorePanel.style.height = "50px";
     scorePanel.style.width = "80px";
     scorePanel.style.padding = "10px 10px";
@@ -149,5 +149,5 @@ function clickStartButton() {
     hideStartButton("start-button");
     addButtonsAndImage(notesArray);
     document.getElementById('hidden-endtimer-features').style.display = "block";
-    
+
 }
