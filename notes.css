@@ -78,6 +78,18 @@ body {
     text-align: center;
 }
 
+#end-message{
+    font-size: 36px;
+    font-weight: bold;
+    color: #0D0628;
+}
+
+#score-message{
+    font-size: 25px;
+    font-weight: bold;
+    color: #0D0628;
+}
+
 #buttons {
     text-align: center;
     padding: 1rem;
