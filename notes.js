@@ -63,7 +63,8 @@ function styleTimer(id) {
 function returnScore(scorePanel) {
     let score = scorePanel.replace("<p id=\"score\">Score: ", "").replace("</p>", "");
     document.getElementById('result-page').style.display = "block";
-    document.getElementById('result-page').innerHTML = "TIME\'S UP!!! You scored " + score + "!<br>";
+    document.getElementById('result-page').innerHTML = "<p id=\"end-message\">TIME\'S UP!!!</p>" +
+        "<p id=\"score-message\">You scored " + score + "!</p>";
     document.getElementById('hidden-endtimer-features').style.display = "none";
 }
 
@@ -102,7 +103,7 @@ function endTimer(sec, timer) {
 }
 
 function startTimer() {
-    let sec = 30;
+    let sec = 1;
     let timer = setInterval(function () {
         sec--;
         document.getElementById('timer').innerHTML = sec;
