@@ -103,7 +103,7 @@ function endTimer(sec, timer) {
 }
 
 function startTimer() {
-    let sec = 1;
+    let sec = 30;
     let timer = setInterval(function () {
         sec--;
         document.getElementById('timer').innerHTML = sec;
