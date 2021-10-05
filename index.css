@@ -1,5 +1,19 @@
 body{
     text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #7189FF;
+    color: #0D0628;
+}
+
+h1{
+    margin: 20px;
+}
+
+#grade-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 #grade-one-topics{
@@ -9,8 +23,26 @@ body{
     text-align: center;
 }
 
+
+button:active {
+    background-color: #f8d400;
+}
+
 button{
     width: 200px;
     height: 50px;
     margin: 10px;
+    background-color:  #FFEE88;
+    border-radius: 5px;
+    border: solid 2px #0D0628;
+}
+
+
+@media (min-width: 768px) {
+
+
+    button:hover {
+        border-width: 3px;
+        cursor: pointer;
+    }
 }
