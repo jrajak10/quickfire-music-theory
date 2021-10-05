@@ -37,6 +37,15 @@ button{
     border: solid 2px #0D0628;
 }
 
+#back-button{
+    height: 40px;
+    width: 40px;
+    margin-top: 40px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 22px;
+}
+
 
 @media (min-width: 768px) {
 

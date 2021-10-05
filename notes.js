@@ -149,6 +149,8 @@ function clickStartButton() {
     randomNote(notesArray);
     hideStartButton("start-button");
     addButtonsAndImage(notesArray);
+    document.getElementById('back-button').style.display = "none";
+    document.getElementById('buttons').style.display = "block";
     document.getElementById('hidden-endtimer-features').style.display = "block";
 
 }
