@@ -12,6 +12,7 @@ body {
     padding: 10px;
     font-weight: bold;
     font-size: 20px;
+    border-width: 3px;
 }
 
 #tick-button {
@@ -90,9 +91,20 @@ body {
     color: #0D0628;
 }
 
+#back-button{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 22px;
+    margin-top: 50px;
+}
+
 #buttons {
     text-align: center;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 button {
