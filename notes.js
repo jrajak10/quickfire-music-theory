@@ -99,6 +99,7 @@ function endTimer(sec, timer) {
         returnScore(scorePanel);
         let tryAgainButton = document.createElement("BUTTON");
         createTryAgainButton(tryAgainButton)
+        document.getElementById('back-button').style.display = "none";
     }
 }
 
@@ -149,7 +150,7 @@ function clickStartButton() {
     randomNote(notesArray);
     hideStartButton("start-button");
     addButtonsAndImage(notesArray);
-    document.getElementById('back-button').style.display = "none";
+    document.getElementById('back-button').style.display = "block";
     document.getElementById('buttons').style.display = "block";
     document.getElementById('hidden-endtimer-features').style.display = "block";
 
