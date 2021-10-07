@@ -1,48 +1,50 @@
 
 
-function randomNote(notesArray) {
-    let notesArrayLength = notesArray.length;
-    let randomIndex = Math.floor(Math.random() * notesArrayLength)
-    return notesArray[randomIndex]
+function generateRandomArrayElement(imageArray) {
+    let imageArrayLength = imageArray.length;
+    let randomIndex = Math.floor(Math.random() * imageArrayLength)
+    return imageArray[randomIndex]
 }
 
 
-function createImage(notesArray) {
+function createImage(imageArray) {
     let newImage = document.createElement("IMG");
-    newImage.setAttribute("src", randomNote(notesArray));
+    newImage.setAttribute("src", generateRandomArrayElement(imageArray));
     newImage.setAttribute("id", "note-image");
     newImage.setAttribute("alt", "Note");
     document.getElementById("image").appendChild(newImage);
 }
 
-function changeImage(notesArray) {
+//changes the image once tick/cross buttons are clicked
+function changeImage(imageArray) {
     if (document.getElementById("image").childNodes.length <= 1) {
-        createImage(notesArray);
+        createImage(imageArray);
     }
     else {
         let note = document.getElementById("note-image")
         note.parentNode.removeChild(note);
-        createImage(notesArray);
+        createImage(imageArray);
     }
 }
 
-function clickNewButton(newButton, id, totalScore, notesArray) {
+//adds to score if it's a tick button
+function clickNewButton(newButton, id, totalScore, imageArray) {
     newButton.onclick = function () {
         if (id === 'tick-button') {
             totalScore++
             document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
         }
-        changeImage(notesArray);
+        changeImage(imageArray);
     }
 }
 
-function createButton(id, text, notesArray) {
+function createButton(id, text, imageArray) {
     let newButton = document.createElement("BUTTON");
     newButton.innerHTML = text;
     newButton.setAttribute("id", id);
 
     let totalScore = 0
-    clickNewButton(newButton, id, totalScore, notesArray)
+    clickNewButton(newButton, id, totalScore, imageArray)
 
     document.getElementById("buttons").appendChild(newButton);
 }
@@ -126,11 +128,11 @@ function updateScorePanel(id) {
     scorePanel.style.padding = "10px 10px";
 }
 
-function addButtonsAndImage(notesArray) {
+function addButtonsAndImage(imageArray) {
     if (document.getElementById("image").childNodes.length <= 1) {
-        createImage(notesArray);
-        createButton('tick-button', "&#10003", notesArray);
-        createButton('cross-button', "&#10060", notesArray);
+        createImage(imageArray);
+        createButton('tick-button', "&#10003", imageArray);
+        createButton('cross-button', "&#10060", imageArray);
     }
 }
 
@@ -147,7 +149,7 @@ function clickStartButton() {
     startTimer();
 
     updateScorePanel('score-panel');
-    randomNote(notesArray);
+    generateRandomArrayElement(notesArray);
     hideStartButton("start-button");
     addButtonsAndImage(notesArray);
     document.getElementById('back-button').style.display = "block";

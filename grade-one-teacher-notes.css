@@ -1,0 +1,143 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #FFEE88;
+}
+
+#quickfire-round-features {
+    text-align: center;
+}
+
+#return-buttons{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+#home-button{
+    height: 36px;
+    width: 36px;
+}
+
+#back-button{
+    display: none;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    font-size: 22px;
+}
+
+a{
+    text-decoration: none;
+}
+
+#start-button {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    border-width: 3px;
+}
+
+#tick-button {
+    height: 40px;
+    width: 68px;
+    color: #228B22;
+    font-size: 18px;
+}
+
+#cross-button {
+    height: 40px;
+    width: 68px;
+}
+
+#try-again-button {
+    margin: 20px;
+    height: 40px;
+    width: 100px;
+    padding: 10px;
+}
+
+#image {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#note-image {
+    border: solid 4px #0F1108;
+    height: 180px;
+    width: 180px;
+}
+
+#timer {
+    font-weight: bold;
+    font-size: 32px;
+    margin-top: 20px;
+    margin-left: 30px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0D0628;
+}
+
+#score-panel {
+    position: absolute;
+    right: 30px;
+    top: 85px;
+    background-color: #c2002d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+#score {
+    color: #FFEE88;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#result-page {
+    text-align: center;
+}
+
+#end-message{
+    font-size: 36px;
+    font-weight: bold;
+    color: #0D0628;
+}
+
+#score-message{
+    font-size: 25px;
+    font-weight: bold;
+    color: #0D0628;
+}
+
+
+
+#buttons {
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    background-color: #d9dae4;
+    border-radius: 5px;
+    border: solid 2px #0D0628;
+    margin: 5px 15px;
+}
+
+button:active {
+    background-color: #9093b0;
+}
+
+@media (min-width: 768px) {
+    button:hover {
+        border-width: 3px;
+        cursor: pointer;
+    }
+}
