@@ -35,10 +35,10 @@
                 </div>
             </div>
             <div id="input">
-                <form>
-                    <input type="text" id="answer" name="answer">
-                    <input type="submit" value="&#x2192">
-                </form>
+                    <div id="enter-text-alert">PLEASE ENTER A VALID ANSWER!</div> 
+                    <input type="text" id="answer" name="answer" autocomplete="off"
+                    onkeyup="this.value = this.value.toUpperCase()" required>
+                    <button id="submit-button">&#x2192</button>
             </div>
         </div>
     </div>

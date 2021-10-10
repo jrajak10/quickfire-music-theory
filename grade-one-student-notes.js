@@ -9,9 +9,10 @@ function generateRandomArrayElement(imageArray) {
 
 function createImage(imageArray) {
     let newImage = document.createElement("IMG");
-    newImage.setAttribute("src", generateRandomArrayElement(imageArray));
+    let selectedElement = generateRandomArrayElement(imageArray)
+    newImage.setAttribute("src", selectedElement);
     newImage.setAttribute("id", "note-image");
-    newImage.setAttribute("alt", "Note");
+    newImage.setAttribute("alt", selectedElement);
     document.getElementById("image").appendChild(newImage);
 }
 
@@ -25,28 +26,6 @@ function changeImage(imageArray) {
         note.parentNode.removeChild(note);
         createImage(imageArray);
     }
-}
-
-//adds to score if it's a tick button
-function clickNewButton(newButton, id, totalScore, imageArray) {
-    newButton.onclick = function () {
-        if (id === 'tick-button') {
-            totalScore++
-            document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
-        }
-        changeImage(imageArray);
-    }
-}
-
-function createButton(id, text, imageArray) {
-    let newButton = document.createElement("BUTTON");
-    newButton.innerHTML = text;
-    newButton.setAttribute("id", id);
-
-    let totalScore = 0
-    clickNewButton(newButton, id, totalScore, imageArray)
-
-    document.getElementById("buttons").appendChild(newButton);
 }
 
 function hideStartButton(id) {
@@ -128,13 +107,57 @@ function updateScorePanel(id) {
     scorePanel.style.padding = "10px 10px";
 }
 
-function addButtonsAndImage(imageArray) {
+function addInputAndImage(imageArray) {
     if (document.getElementById("image").childNodes.length <= 1) {
         createImage(imageArray);
-        createButton('tick-button', "&#10003", imageArray);
-        createButton('cross-button', "&#10060", imageArray);
+
     }
+    document.getElementById("input").style.display = "block"
 }
+
+function checkAnswer(imageArray, correctAnswers, totalScore, answer) {
+    let imageFile = document.getElementById("note-image").alt
+    if (correctAnswers[imageFile] === answer) {
+        console.log("CORRECT")
+        totalScore++
+        document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
+    }
+    else {
+        console.log("INCORRECT")
+    }
+    changeImage(imageArray);
+    return totalScore
+}
+
+function submitButtonClick(imageArray, correctAnswers, totalScore) {
+    let answer = document.getElementById("answer").value
+    let textAlert = document.getElementById("enter-text-alert")
+    if (this.answer.value === "") {
+        textAlert.style.display = "block";
+    }
+    else {
+        textAlert.style.display = "none";
+        this.answer.value = "";
+        totalScore = checkAnswer(imageArray, correctAnswers, totalScore, answer)
+    }
+    return totalScore
+}
+
+function clickWhenPressEnter(id) {
+    let input = document.getElementById(id);
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("submit-button").click();
+        }
+    }); 
+}
+
+
 
 function clickStartButton() {
     let notesArray = ["Notes/Treble C4.png", "Notes/Treble D4.png", "Notes/Treble E4.png", "Notes/Treble F4.png",
@@ -144,6 +167,36 @@ function clickStartButton() {
         "Notes/Bass C3.png", "Notes/Bass D3.png", "Notes/Bass E3.png", "Notes/Bass F3.png", "Notes/Bass G3.png",
         "Notes/Bass A3.png", "Notes/Bass B3.png", "Notes/Bass C4.png"];
 
+    let correctAnswers = {
+        "Notes/Treble C4.png": "C",
+        "Notes/Treble D4.png": "D",
+        "Notes/Treble E4.png": "E",
+        "Notes/Treble F4.png": "F",
+        "Notes/Treble G4.png": "G",
+        "Notes/Treble A4.png": "A",
+        "Notes/Treble B4.png": "B",
+        "Notes/Treble C5.png": "C",
+        "Notes/Treble D5.png": "D",
+        "Notes/Treble E5.png": "E",
+        "Notes/Treble F5.png": "F",
+        "Notes/Treble G5.png": "G",
+        "Notes/Treble A5.png": "A",
+        "Notes/Bass E2.png": "E",
+        "Notes/Bass F2.png": "F",
+        "Notes/Bass G2.png": "G",
+        "Notes/Bass A2.png": "A",
+        "Notes/Bass B2.png": "B",
+        "Notes/Bass C3.png": "C",
+        "Notes/Bass D3.png": "D",
+        "Notes/Bass E3.png": "E",
+        "Notes/Bass F3.png": "F",
+        "Notes/Bass G3.png": "G",
+        "Notes/Bass A3.png": "A",
+        "Notes/Bass B3.png": "B",
+        "Notes/Bass C4.png": "C"
+
+    }
+
     document.getElementById('timer').innerHTML = 30
     styleTimer('timer');
     startTimer();
@@ -151,9 +204,18 @@ function clickStartButton() {
     updateScorePanel('score-panel');
     generateRandomArrayElement(notesArray);
     hideStartButton("start-button");
-    addButtonsAndImage(notesArray);
+    addInputAndImage(notesArray);
     document.getElementById('back-button').style.display = "block";
     document.getElementById('buttons').style.display = "block";
     document.getElementById('hidden-endtimer-features').style.display = "block";
+
+    let totalScore = 0
+
+    document.getElementById("submit-button").onclick = function () {
+        totalScore = submitButtonClick(notesArray, correctAnswers, totalScore);
+        return totalScore
+    }
+
+    clickWhenPressEnter("answer")
 
 }
