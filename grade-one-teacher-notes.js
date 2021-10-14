@@ -67,7 +67,7 @@ function returnScore(scorePanel) {
     document.getElementById('result-page').style.display = "block";
     document.getElementById('result-page').innerHTML = "<p id=\"end-message\">TIME\'S UP!!!</p>" +
         "<p id=\"score-message\">You scored " + score + "!</p>";
-    document.getElementById('hidden-endtimer-features').style.display = "none";
+    document.getElementById('hidden-features').style.display = "none";
 }
 
 function createTryAgainButton(tryAgainButton) {
@@ -86,7 +86,7 @@ function tenSecondsRemaining(sec) {
         document.getElementById("timer").style.color = "#c2002d";
         document.getElementById("timer").style.borderColor = "#c2002d";
     }
-} 0
+}
 
 function styleEndTimer(id) {
     document.getElementById(id).style.marginLeft = "auto";
@@ -136,24 +136,27 @@ function addButtonsAndImage(imageArray) {
     }
 }
 
-function clickStartButton() {
-    let notesArray = ["Notes/Treble C4.png", "Notes/Treble D4.png", "Notes/Treble E4.png", "Notes/Treble F4.png",
-        "Notes/Treble G4.png", "Notes/Treble A4.png", "Notes/Treble B4.png", "Notes/Treble C5.png",
-        "Notes/Treble D5.png", "Notes/Treble E5.png", "Notes/Treble F5.png", "Notes/Treble G5.png", "Notes/Treble A5.png",
-        "Notes/Bass E2.png", "Notes/Bass F2.png", "Notes/Bass G2.png", "Notes/Bass A2.png", "Notes/Bass B2.png",
-        "Notes/Bass C3.png", "Notes/Bass D3.png", "Notes/Bass E3.png", "Notes/Bass F3.png", "Notes/Bass G3.png",
-        "Notes/Bass A3.png", "Notes/Bass B3.png", "Notes/Bass C4.png"];
+async function fetchData(data) {
+    let fetchedData = await fetch(data);
+    let json = await fetchedData.json();
+    let features = json.features;
+    return features
+}
+
+async function clickStartButton() {
+    let imageArrayData = await fetchData("images.json")
+    let imageArray = imageArrayData["grade_1_notes"]
 
     document.getElementById('timer').innerHTML = 30
     styleTimer('timer');
     startTimer();
 
     updateScorePanel('score-panel');
-    generateRandomArrayElement(notesArray);
+    generateRandomArrayElement(imageArray);
     hideStartButton("start-button");
-    addButtonsAndImage(notesArray);
+    addButtonsAndImage(imageArray);
     document.getElementById('back-button').style.display = "block";
     document.getElementById('buttons').style.display = "block";
-    document.getElementById('hidden-endtimer-features').style.display = "block";
+    document.getElementById('hidden-features').style.display = "block";
 
 }
