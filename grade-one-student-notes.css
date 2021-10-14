@@ -117,8 +117,28 @@ input[type="text"] {
 }
 
 #result-page {
+    display: none;
     text-align: center;
 }
+
+h2{
+    text-align: center;
+}
+
+#corrections{
+    display: none
+}
+
+.correct-image{
+    height: 50px;
+    border: solid 2px #000;
+}
+
+table{
+    display: flex;
+    justify-content: center;
+}
+
 
 #end-message{
     font-size: 36px;

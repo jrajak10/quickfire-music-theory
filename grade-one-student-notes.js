@@ -1,5 +1,3 @@
-
-
 function generateRandomArrayElement(imageArray) {
     let imageArrayLength = imageArray.length;
     let randomIndex = Math.floor(Math.random() * imageArrayLength)
@@ -46,7 +44,16 @@ function returnScore(scorePanel) {
     document.getElementById('result-page').style.display = "block";
     document.getElementById('result-page').innerHTML = "<p id=\"end-message\">TIME\'S UP!!!</p>" +
         "<p id=\"score-message\">You scored " + score + "!</p>";
-    document.getElementById('hidden-endtimer-features').style.display = "none";
+    document.getElementById('hidden-features').style.display = "none";
+    let correctionsDiv = "<h2>Incorrect Answers</h2><table></table>"
+    showCorrections(correctionsDiv)
+}
+
+function showCorrections(correctionsDiv){
+    if (document.getElementById('corrections').innerHTML === correctionsDiv){
+        document.getElementById('corrections').style.display = "none";
+    }
+    else document.getElementById('corrections').style.display = "block";
 }
 
 function createTryAgainButton(tryAgainButton) {
@@ -65,11 +72,100 @@ function tenSecondsRemaining(sec) {
         document.getElementById("timer").style.color = "#c2002d";
         document.getElementById("timer").style.borderColor = "#c2002d";
     }
-} 0
+}
 
 function styleEndTimer(id) {
     document.getElementById(id).style.marginLeft = "auto";
     document.getElementById(id).style.marginRight = "auto";
+}
+
+function updateScorePanel(id) {
+    let scorePanel = document.getElementById(id);
+    scorePanel.innerHTML = "<p id=\"score\">Score: 0</p>";
+    scorePanel.style.border = "solid 3px #0D0628";
+    scorePanel.style.height = "50px";
+    scorePanel.style.width = "80px";
+    scorePanel.style.padding = "10px 10px";
+}
+
+function addInputAndImage(imageArray) {
+    if (document.getElementById("image").childNodes.length <= 1) {
+        createImage(imageArray);
+
+    }
+    document.getElementById("input").style.display = "block"
+}
+
+function correctAnswerCounter(imageArray, correctAnswers, totalScore, answer) {
+    let imageFile = document.getElementById("note-image").alt
+    if (correctAnswers[imageFile] === answer) {
+        totalScore++
+        document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
+    }
+    changeImage(imageArray);
+    return totalScore
+}
+
+function checkValidAnswer(imageArray, correctAnswers, totalScore, answer) {
+    let textAlert = document.getElementById("enter-text-alert")
+    if (this.answer.value === "") {
+        textAlert.style.display = "block";
+    }
+    else {
+        textAlert.style.display = "none";
+        this.answer.value = "";
+        totalScore = correctAnswerCounter(imageArray, correctAnswers, totalScore, answer)
+        changeImage(imageArray);
+    }
+    return totalScore
+}
+
+function clickWhenPressEnter(id) {
+    let input = document.getElementById(id);
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("submit-button").click();
+        }
+    }); 
+}
+
+function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
+    for(let i=0; i<correctImageArray.length; i++){
+        statement += "<tr><th><img class=\"correct-image\" src=\"" + correctImageArray[i] + "\"></th><th>You said " 
+        + incorrectAnswerArray[i] + ".<br> The correct answer was " +
+        correctAnswerArray[i] + ".</th></tr>"
+    }
+
+    return statement + "</table>"   
+}
+
+function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray){
+    if(answer !== correctAnswers[imageFile] && answer !== ""){
+        correctImageArray.push(imageFile);
+        incorrectAnswerArray.push(answer);
+        correctAnswerArray.push(correctAnswers[imageFile])
+    }
+
+    let statement = "<h2>Incorrect Answers</h2><table>"
+    return returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray)
+}
+
+function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray){
+    
+    document.getElementById("submit-button").onclick = function(){
+        let answer = document.getElementById("answer").value
+        let imageFile = document.getElementById("note-image").alt
+        totalScore = checkValidAnswer(imageArray, correctAnswers, totalScore, answer)   
+        let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile, 
+            correctImageArray, incorrectAnswerArray, correctAnswerArray)
+        
+        document.getElementById('corrections').innerHTML = incorrectAnswers
+    }
 }
 
 function endTimer(sec, timer) {
@@ -97,125 +193,41 @@ function startTimer() {
     }, 1000);
 }
 
-
-function updateScorePanel(id) {
-    let scorePanel = document.getElementById(id);
-    scorePanel.innerHTML = "<p id=\"score\">Score: 0</p>";
-    scorePanel.style.border = "solid 3px #0D0628";
-    scorePanel.style.height = "50px";
-    scorePanel.style.width = "80px";
-    scorePanel.style.padding = "10px 10px";
-}
-
-function addInputAndImage(imageArray) {
-    if (document.getElementById("image").childNodes.length <= 1) {
-        createImage(imageArray);
-
-    }
-    document.getElementById("input").style.display = "block"
-}
-
-function checkAnswer(imageArray, correctAnswers, totalScore, answer) {
-    let imageFile = document.getElementById("note-image").alt
-    if (correctAnswers[imageFile] === answer) {
-        console.log("CORRECT")
-        totalScore++
-        document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
-    }
-    else {
-        console.log("INCORRECT")
-    }
-    changeImage(imageArray);
-    return totalScore
-}
-
-function submitButtonClick(imageArray, correctAnswers, totalScore) {
-    let answer = document.getElementById("answer").value
-    let textAlert = document.getElementById("enter-text-alert")
-    if (this.answer.value === "") {
-        textAlert.style.display = "block";
-    }
-    else {
-        textAlert.style.display = "none";
-        this.answer.value = "";
-        totalScore = checkAnswer(imageArray, correctAnswers, totalScore, answer)
-    }
-    return totalScore
-}
-
-function clickWhenPressEnter(id) {
-    let input = document.getElementById(id);
-    // Execute a function when the user releases a key on the keyboard
-    input.addEventListener("keyup", function (event) {
-        // Number 13 is the "Enter" key on the keyboard
-        if (event.keyCode === 13) {
-            // Cancel the default action, if needed
-            event.preventDefault();
-            // Trigger the button element with a click
-            document.getElementById("submit-button").click();
-        }
-    }); 
+async function fetchData(data) {
+    let fetchedData = await fetch(data);
+    let json = await fetchedData.json();
+    let features = json.features;
+    return features
 }
 
 
+function startButtonFeatures(){
+    document.getElementById('back-button').style.display = "block";
+    document.getElementById('buttons').style.display = "block";
+    document.getElementById('hidden-features').style.display = "block";
+}
 
-function clickStartButton() {
-    let notesArray = ["Notes/Treble C4.png", "Notes/Treble D4.png", "Notes/Treble E4.png", "Notes/Treble F4.png",
-        "Notes/Treble G4.png", "Notes/Treble A4.png", "Notes/Treble B4.png", "Notes/Treble C5.png",
-        "Notes/Treble D5.png", "Notes/Treble E5.png", "Notes/Treble F5.png", "Notes/Treble G5.png", "Notes/Treble A5.png",
-        "Notes/Bass E2.png", "Notes/Bass F2.png", "Notes/Bass G2.png", "Notes/Bass A2.png", "Notes/Bass B2.png",
-        "Notes/Bass C3.png", "Notes/Bass D3.png", "Notes/Bass E3.png", "Notes/Bass F3.png", "Notes/Bass G3.png",
-        "Notes/Bass A3.png", "Notes/Bass B3.png", "Notes/Bass C4.png"];
-
-    let correctAnswers = {
-        "Notes/Treble C4.png": "C",
-        "Notes/Treble D4.png": "D",
-        "Notes/Treble E4.png": "E",
-        "Notes/Treble F4.png": "F",
-        "Notes/Treble G4.png": "G",
-        "Notes/Treble A4.png": "A",
-        "Notes/Treble B4.png": "B",
-        "Notes/Treble C5.png": "C",
-        "Notes/Treble D5.png": "D",
-        "Notes/Treble E5.png": "E",
-        "Notes/Treble F5.png": "F",
-        "Notes/Treble G5.png": "G",
-        "Notes/Treble A5.png": "A",
-        "Notes/Bass E2.png": "E",
-        "Notes/Bass F2.png": "F",
-        "Notes/Bass G2.png": "G",
-        "Notes/Bass A2.png": "A",
-        "Notes/Bass B2.png": "B",
-        "Notes/Bass C3.png": "C",
-        "Notes/Bass D3.png": "D",
-        "Notes/Bass E3.png": "E",
-        "Notes/Bass F3.png": "F",
-        "Notes/Bass G3.png": "G",
-        "Notes/Bass A3.png": "A",
-        "Notes/Bass B3.png": "B",
-        "Notes/Bass C4.png": "C"
-
-    }
+async function clickStartButton() {
+    let imageArrayData = await fetchData("images.json")
+    let imageArray = imageArrayData["grade_1_notes"]
+    let correctAnswersData = await fetchData("correct_answers.json")
+    let correctAnswers = correctAnswersData["grade_1_notes"]
 
     document.getElementById('timer').innerHTML = 30
     styleTimer('timer');
     startTimer();
-
     updateScorePanel('score-panel');
-    generateRandomArrayElement(notesArray);
+    generateRandomArrayElement(imageArray);
     hideStartButton("start-button");
-    addInputAndImage(notesArray);
-    document.getElementById('back-button').style.display = "block";
-    document.getElementById('buttons').style.display = "block";
-    document.getElementById('hidden-endtimer-features').style.display = "block";
-
+    addInputAndImage(imageArray);
+    startButtonFeatures()
+    
+    
     let totalScore = 0
-
-    document.getElementById("submit-button").onclick = function () {
-        totalScore = submitButtonClick(notesArray, correctAnswers, totalScore);
-        return totalScore
-    }
-
+    let correctImageArray = []
+    let incorrectAnswerArray = []
+    let correctAnswerArray = []
+    clickSubmitButton(imageArray, correctAnswers, totalScore, 
+    correctImageArray, incorrectAnswerArray, correctAnswerArray)
     clickWhenPressEnter("answer")
-
 }
