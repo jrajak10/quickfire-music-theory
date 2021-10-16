@@ -23,6 +23,16 @@ h1{
     text-align: center;
 }
 
+#teacher-student-question{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#store-topic{
+    display: none;
+}
 
 button:active {
     background-color: #f8d400;
