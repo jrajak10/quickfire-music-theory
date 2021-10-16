@@ -1,0 +1,8 @@
+{
+    "features": {
+        "grade-one-notes": {
+            "teacher": "grade-one-teacher-notes.html",
+            "student": "grade-one-student-notes.html"
+        }
+}
+}
