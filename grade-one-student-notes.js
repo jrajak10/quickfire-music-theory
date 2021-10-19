@@ -37,6 +37,7 @@ function styleTimer(id) {
     timerStyle.border = "solid 5px #0D0628";
     timerStyle.borderRadius = "50%";
     timerStyle.padding = "5px";
+    timerStyle.display = "flex";
 }
 
 function returnScore(scorePanel) {
@@ -83,8 +84,7 @@ function updateScorePanel(id) {
     let scorePanel = document.getElementById(id);
     scorePanel.innerHTML = "<p id=\"score\">Score: 0</p>";
     scorePanel.style.border = "solid 3px #0D0628";
-    scorePanel.style.height = "50px";
-    scorePanel.style.width = "80px";
+    scorePanel.style.display= "flex";
     scorePanel.style.padding = "10px 10px";
 }
 
@@ -136,7 +136,7 @@ function clickWhenPressEnter(id) {
 
 function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
     for(let i=0; i<correctImageArray.length; i++){
-        statement += "<tr><th><img class=\"correct-image\" src=\"" + correctImageArray[i] + "\"></th><th>You said " 
+        statement += "<tr><th><img class=\"correct-image\" src=\"" + correctImageArray[i] + "\"></th><th class=\"answer-description\">You said " 
         + incorrectAnswerArray[i] + ".<br> The correct answer was " +
         correctAnswerArray[i] + ".</th></tr>"
     }
@@ -205,6 +205,7 @@ function startButtonFeatures(){
     document.getElementById('back-button').style.display = "block";
     document.getElementById('buttons').style.display = "block";
     document.getElementById('hidden-features').style.display = "block";
+    document.getElementById('round-heading').style.display = "none";
 }
 
 async function clickStartButton() {

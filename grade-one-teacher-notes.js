@@ -60,6 +60,7 @@ function styleTimer(id) {
     timerStyle.border = "solid 5px #0D0628";
     timerStyle.borderRadius = "50%";
     timerStyle.padding = "5px";
+    timerStyle.display = "flex";
 }
 
 function returnScore(scorePanel) {
@@ -118,13 +119,18 @@ function startTimer() {
     }, 1000);
 }
 
+function startButtonFeatures(){
+    document.getElementById('back-button').style.display = "block";
+    document.getElementById('buttons').style.display = "block";
+    document.getElementById('hidden-features').style.display = "block";
+    document.getElementById('round-heading').style.display = "none";
+}
 
 function updateScorePanel(id) {
     let scorePanel = document.getElementById(id);
     scorePanel.innerHTML = "<p id=\"score\">Score: 0</p>";
     scorePanel.style.border = "solid 3px #0D0628";
-    scorePanel.style.height = "50px";
-    scorePanel.style.width = "80px";
+    scorePanel.style.display= "flex";
     scorePanel.style.padding = "10px 10px";
 }
 
@@ -155,8 +161,5 @@ async function clickStartButton() {
     generateRandomArrayElement(imageArray);
     hideStartButton("start-button");
     addButtonsAndImage(imageArray);
-    document.getElementById('back-button').style.display = "block";
-    document.getElementById('buttons').style.display = "block";
-    document.getElementById('hidden-features').style.display = "block";
-
+    startButtonFeatures()
 }
