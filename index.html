@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div class="container">
     <div id="grade-list">
         <h2>SELECT YOUR GRADE</h2>
         <button class="grade-button" onclick="showTopics('grade-list', 'grade-one-topics')">Grade 1</button>
@@ -35,8 +36,10 @@
         <h2>ARE YOU A TEACHER OR STUDENT?</h2>
         <button class="teacher-student-button" id="teacher" onclick=directLink(this)>Teacher</button>
         <button class="teacher-student-button" id="student" onclick=directLink(this)>Student</button>
+        <!-- <a href="#"><button id="back-button" onclick="goBack('grade-list', 'grade-one-topics')">&#8592</button></a>-->
     </div>
-<div id="store-topic"></div>
+    <div id="store-topic"></div>
+</div>
 
 </body>
 

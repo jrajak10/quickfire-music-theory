@@ -57,8 +57,30 @@ button{
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
+    button:hover {
+        border-width: 3px;
+        cursor: pointer;
+    }
+}
 
+
+
+@media (min-width: 1025px) {
+
+    h1 {
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    button{
+        height: 70px;
+        width: 250px;
+        font-size: 20px;
+    }
 
     button:hover {
         border-width: 3px;
