@@ -159,17 +159,18 @@ table{
 }
 
 #end-message{
+    margin-top: 50px;
     font-size: 36px;
     font-weight: bold;
     color: #0D0628;
 }
 
 #score-message{
+    margin-bottom: 20px;
     font-size: 25px;
     font-weight: bold;
     color: #0D0628;
 }
-
 
 
 #buttons {
@@ -251,5 +252,8 @@ button:active {
     .answer-description{
         padding-left: 50px;
     }
-    
+
+    #score-message{
+        margin-bottom: 30px;
+    }
 }
