@@ -150,6 +150,79 @@ button:active {
     background-color: #9093b0;
 }
 
+@media (min-width: 481px) {
+
+    #round-heading{
+        margin: 0px 60px;
+    }
+
+    #start-button {
+        width: 200px;
+        height: 125px;
+        font-size: 25px;
+    }
+
+    #timer {
+        font-size: 36px;
+        margin-left: 75px;
+        height: 70px;
+        width: 70px;
+    }
+
+    #score-panel {
+        margin-right: 75px;
+        top: 85px;
+        height: 64px;
+        width: 112px;
+    }
+
+    #score{
+        font-size: 28px;
+    }
+
+    #note-image{
+        height: 250px;
+        width: 250px;
+    }
+
+    #tick-button {
+        height: 60px;
+        width: 102px;
+        font-size: 18px;
+        margin-right: 50px;
+    }
+    
+    #cross-button {
+        height: 60px;
+        width: 102px;
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+
+    #try-again-button {
+        margin: 20px;
+        height: 60px;
+        width: 150px;
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    #home-button{
+        height: 40px;
+        width: 40px;
+    }
+
+    #back-button{
+        height: 40px;
+        width: 40px;
+    }
+    
+    #score-message{
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+}
+
 @media (min-width: 768px) {
     button:hover {
         border-width: 3px;
