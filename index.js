@@ -7,7 +7,7 @@ function showTeacherStudentQuestion(button, topics, question){
     document.getElementById(topics).style.display = "none";
     document.getElementById(question).style.display = "flex";
     let topicID = button.id;
-
+    document.getElementById('store-topic-list').innerHTML = topics
     document.getElementById('store-topic').innerHTML = topicID
     return button.id
 }
@@ -17,6 +17,11 @@ function goBack(list, topics){
     document.getElementById(topics).style.display = "none";
 }
 
+function backToTopics(){
+    document.getElementById("teacher-student-question").style.display = "none";
+    let topic = document.getElementById('store-topic-list').innerHTML
+    document.getElementById(topic).style.display = "flex";
+}
 
 async function fetchData(data) {
     let fetchedData = await fetch(data);

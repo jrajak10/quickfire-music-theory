@@ -34,6 +34,10 @@ h1{
     display: none;
 }
 
+#store-topic-list{
+    display: none;
+}
+
 button:active {
     background-color: #f8d400;
 }
@@ -124,6 +128,12 @@ button{
         height: 70px;
         width: 250px;
         font-size: 20px;
+    }
+
+    #back-button{
+        height: 60px;
+        width: 60px;
+        font-size: 28px;
     }
 
     button:hover {
