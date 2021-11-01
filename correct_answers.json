@@ -27,6 +27,23 @@
             "Notes/Bass A3.png": "A",
             "Notes/Bass B3.png": "B",
             "Notes/Bass C4.png": "C"
+        },
+        "grade_1_note_value_names" : {
+            "Note, Rest Value Names/crotchet.png": "crotchet",
+            "Note, Rest Value Names/crotchet_rest.png": "crotchet",
+            "Note, Rest Value Names/dotted_crotchet_rest.png": "dotted crotchet",
+            "Note, Rest Value Names/dotted_crotchet.png": "dotted crotchet",
+            "Note, Rest Value Names/dotted_minim_rest.png": "dotted minim",
+            "Note, Rest Value Names/dotted_quaver_rest.png": "dotted quaver",
+            "Note, Rest Value Names/dotted-quaver.png": "dotted quaver",
+            "Note, Rest Value Names/minim_rest.png": "minim",
+            "Note, Rest Value Names/minim.png": "minim",
+            "Note, Rest Value Names/quaver_rest.png": "quaver",
+            "Note, Rest Value Names/quaver.png": "quaver",
+            "Note, Rest Value Names/semibreve_rest.png": "semibreve",
+            "Note, Rest Value Names/semibreve.png": "semibreve",
+            "Note, Rest Value Names/semiquaver_rest.png": "semiquaver",
+            "Note, Rest Value Names/semiquaver.png": "semiquaver"
         }
     }
 }
