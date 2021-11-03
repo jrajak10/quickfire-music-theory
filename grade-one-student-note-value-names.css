@@ -50,9 +50,13 @@ a{
     vertical-align: middle;
 }
 
+input{
+    height: 40px;
+}
+
 input[type="text"] {
-    font-size: 36px;
-    width: 100px;
+    font-size: 20px;
+    width: 150px;
     text-align: center;
 }
 
@@ -316,5 +320,15 @@ button:active {
 
     #score-message{
         margin-bottom: 30px;
+    }
+
+    input{
+        height: 40px;
+    }
+    
+    input[type="text"] {
+        font-size: 28px;
+        width: 220px;
+        text-align: center;
     }
 }

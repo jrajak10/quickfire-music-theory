@@ -211,9 +211,9 @@ function startButtonFeatures(){
 async function clickStartButton() {
     let imageArrayData = await fetchData("images.json")
     let imageArray = imageArrayData["grade_1_note_value_names"]
+   
     let correctAnswersData = await fetchData("correct_answers.json")
     let correctAnswers = correctAnswersData["grade_1_note_value_names"]
-
     document.getElementById('timer').innerHTML = 30
     styleTimer('timer');
     startTimer();
