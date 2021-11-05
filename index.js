@@ -37,7 +37,6 @@ async function directLink(button){
     let topic = document.getElementById('store-topic').innerHTML
     let option = button.id
     let link = linksData[topic][option]
-    
     window.location = link
  }
 

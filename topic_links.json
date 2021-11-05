@@ -3,6 +3,10 @@
         "grade-one-notes": {
             "teacher": "grade-one-teacher-notes.html",
             "student": "grade-one-student-notes.html"
+        },
+        "grade-one-note-value-names": {
+            "teacher": "grade-one-teacher-note-value-names.html",
+            "student": "grade-one-student-note-value-names.html"
         }
 }
 }
