@@ -14,35 +14,38 @@
 
 <body>
     <div class="container">
-    <div id="grade-list">
-        <h2>SELECT YOUR GRADE</h2>
-        <button class="grade-button" onclick="showTopics('grade-list', 'grade-one-topics')">Grade 1</button>
-        <button class="grade-button">Grade 2 <br>(COMING SOON!)</button>
-        <button class="grade-button">Grade 3 <br>(COMING SOON!)</button>
-        <button class="grade-button">Grade 4 <br>(COMING SOON!)</button>
-        <button class="grade-button">Grade 5 <br>(COMING SOON!)</button>
+        <div id="grade-list">
+            <h2>SELECT YOUR GRADE</h2>
+            <button class="grade-button" onclick="showTopics('grade-list', 'grade-one-topics')">Grade 1</button>
+            <button class="grade-button">Grade 2 <br>(COMING SOON!)</button>
+            <button class="grade-button">Grade 3 <br>(COMING SOON!)</button>
+            <button class="grade-button">Grade 4 <br>(COMING SOON!)</button>
+            <button class="grade-button">Grade 5 <br>(COMING SOON!)</button>
+        </div>
+        <div id="grade-one-topics">
+            <h2>SELECT YOUR TOPIC</h2>
+            <button class="topic-button" id="grade-one-notes"
+                onclick="showTeacherStudentQuestion(this, 'grade-one-topics', 'teacher-student-question')">Notes</button>
+            <button class="topic-button" id="grade-one-note-value-names"
+                onclick="showTeacherStudentQuestion(this, 'grade-one-topics', 'teacher-student-question')">Note Value
+                Names</button>
+            <button class="topic-button" id="grade-one-count-note-values"
+                onclick="showTeacherStudentQuestion(this, 'grade-one-topics', 'teacher-student-question')">Count Note
+                Values</button>
+            <a href="#"><button>MORE COMING!!!</button></a>
+            <a href="#"><button>MORE COMING!!!</button></a>
+            <a href="#"><button>MORE COMING!!!</button></a>
+            <button id="back-button" onclick="goBack('grade-list', 'grade-one-topics')">&#8592</button>
+        </div>
+        <div id="teacher-student-question">
+            <h2>ARE YOU A TEACHER OR STUDENT?</h2>
+            <button class="teacher-student-button" id="teacher" onclick=directLink(this)>Teacher</button>
+            <button class="teacher-student-button" id="student" onclick=directLink(this)>Student</button>
+            <button id="back-button" onclick=backToTopics()>&#8592</button>
+        </div>
+        <div id="store-topic-list"></div>
+        <div id="store-topic"></div>
     </div>
-    <div id="grade-one-topics">
-        <h2>SELECT YOUR TOPIC</h2>
-        <button class="topic-button" id="grade-one-notes"
-            onclick="showTeacherStudentQuestion(this, 'grade-one-topics', 'teacher-student-question')">Notes</button>
-        <button class="topic-button" id="grade-one-note-value-names"
-            onclick="showTeacherStudentQuestion(this, 'grade-one-topics', 'teacher-student-question')">Note Value Names</button>
-        <a href="#"><button>MORE COMING!!!</button></a>
-        <a href="#"><button>MORE COMING!!!</button></a>
-        <a href="#"><button>MORE COMING!!!</button></a>
-        <a href="#"><button>MORE COMING!!!</button></a>
-       <button id="back-button" onclick="goBack('grade-list', 'grade-one-topics')">&#8592</button>
-    </div>
-    <div id="teacher-student-question">
-        <h2>ARE YOU A TEACHER OR STUDENT?</h2>
-        <button class="teacher-student-button" id="teacher" onclick=directLink(this)>Teacher</button>
-        <button class="teacher-student-button" id="student" onclick=directLink(this)>Student</button>
-        <button id="back-button" onclick=backToTopics()>&#8592</button>
-    </div>
-    <div id="store-topic-list"></div>
-    <div id="store-topic"></div>
-</div>
 
 </body>
 
