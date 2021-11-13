@@ -7,6 +7,10 @@
         "grade-one-note-value-names": {
             "teacher": "grade-one-teacher-note-value-names.html",
             "student": "grade-one-student-note-value-names.html"
+        },
+        "grade-one-count-note-values": {
+            "teacher": "grade-one-teacher-count-note-values.html",
+            "student": "grade-one-student-count-note-values.html"
         }
 }
 }
