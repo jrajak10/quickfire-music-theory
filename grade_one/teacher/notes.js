@@ -150,7 +150,8 @@ async function fetchData(data) {
 }
 
 async function clickStartButton() {
-    let imageArrayData = await fetchData("images.json")
+    let imageArrayData = await fetchData("../../images.json")
+    console.log((imageArrayData))
     let imageArray = imageArrayData["grade_1_notes"]
 
     document.getElementById('timer').innerHTML = 30

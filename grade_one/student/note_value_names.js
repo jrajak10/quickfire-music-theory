@@ -46,7 +46,7 @@ function returnScore(scorePanel) {
     document.getElementById('result-page').innerHTML = "<p id=\"end-message\">TIME\'S UP!!!</p>" +
         "<p id=\"score-message\">You scored " + score + "!</p>";
     document.getElementById('hidden-features').style.display = "none";
-    let correctionsDiv = "<h2>Incorrect Answers</h2><table>"
+    let correctionsDiv = "<h2>Incorrect Answers</h2><table></table>"
     showCorrections(correctionsDiv)
 }
 
@@ -107,9 +107,8 @@ function correctAnswerCounter(imageArray, correctAnswers, totalScore, answer) {
 }
 
 function checkValidAnswer(imageArray, correctAnswers, totalScore, answer) {
-    let textAlert = document.getElementById("enter-text-alert");
-    let alphabeticRegex = /[a-zA-Z]/g;
-    if (this.answer.value === "" || alphabeticRegex.test(this.answer.value)) {
+    let textAlert = document.getElementById("enter-text-alert")
+    if (this.answer.value === "") {
         textAlert.style.display = "block";
     }
     else {
@@ -137,13 +136,12 @@ function clickWhenPressEnter(id) {
 
 function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
     for(let i=0; i<correctImageArray.length; i++){
-        statement += "<div class=\"correction\"><img class=\"correct-image\" src=\"" + correctImageArray[i] + 
-        "\"><p class=\"answer-description\">You said " 
+        statement += "<tr><th><img class=\"correct-image\" src=\"" + correctImageArray[i] + "\"></th><th class=\"answer-description\">You said " 
         + incorrectAnswerArray[i] + ".<br> The correct answer was " +
-        correctAnswerArray[i] + ".</p></div>"
+        correctAnswerArray[i] + ".</th></tr>"
     }
 
-    return statement;
+    return statement + "</table>"   
 }
 
 function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray){
@@ -153,7 +151,7 @@ function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArra
         correctAnswerArray.push(correctAnswers[imageFile])
     }
 
-    let statement = "<h2>Incorrect Answers</h2>"
+    let statement = "<h2>Incorrect Answers</h2><table>"
     return returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray)
 }
 
@@ -211,11 +209,11 @@ function startButtonFeatures(){
 }
 
 async function clickStartButton() {
-    let imageArrayData = await fetchData("images.json")
-    let imageArray = imageArrayData["grade_1_count_note_values"]
+    let imageArrayData = await fetchData("../../images.json")
+    let imageArray = imageArrayData["grade_1_note_value_names"]
    
     let correctAnswersData = await fetchData("correct_answers.json")
-    let correctAnswers = correctAnswersData["grade_1_count_note_values"]
+    let correctAnswers = correctAnswersData["grade_1_note_value_names"]
     document.getElementById('timer').innerHTML = 30
     styleTimer('timer');
     startTimer();

@@ -1,16 +1,16 @@
 {
     "features": {
         "grade-one-notes": {
-            "teacher": "grade-one-teacher-notes.html",
-            "student": "grade-one-student-notes.html"
+            "teacher": "grade_one/teacher/notes.html",
+            "student": "grade_one/student/notes.html"
         },
         "grade-one-note-value-names": {
-            "teacher": "grade-one-teacher-note-value-names.html",
-            "student": "grade-one-student-note-value-names.html"
+            "teacher": "grade_one/teacher/note_value_names.html",
+            "student": "grade_one/student/note_value_names.html"
         },
         "grade-one-count-note-values": {
-            "teacher": "grade-one-teacher-count-note-values.html",
-            "student": "grade-one-student-count-note-values.html"
+            "teacher": "grade_one/teacher/count_note_values.html",
+            "student": "grade_one/student/count_note_values.html"
         }
 }
 }
