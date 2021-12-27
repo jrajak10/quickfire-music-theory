@@ -11,6 +11,11 @@
         "grade-one-count-note-values": {
             "teacher": "grade_one/teacher/count_note_values.html",
             "student": "grade_one/student/count_note_values.html"
+        },
+        "grade-one-accidentals": {
+            "teacher": "grade_one/teacher/accidentals.html",
+            "student": "grade_one/student/accidentals.html"
         }
+
 }
 }

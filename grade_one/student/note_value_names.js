@@ -135,10 +135,16 @@ function clickWhenPressEnter(id) {
 }
 
 function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    for(let i=0; i<correctImageArray.length; i++){
-        statement += "<tr><th><img class=\"correct-image\" src=\"" + correctImageArray[i] + "\"></th><th class=\"answer-description\">You said " 
-        + incorrectAnswerArray[i] + ".<br> The correct answer was " +
-        correctAnswerArray[i] + ".</th></tr>"
+    if(incorrectAnswerArray.length === 0){
+        statement +=  "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
+    }
+    else {
+        for (let i = 0; i < correctImageArray.length; i++) {
+            statement += "<div class=\"correction\"><img class=\"correct-image\" src=\"" + correctImageArray[i] +
+                "\"><p class=\"answer-description\">You said "
+                + incorrectAnswerArray[i] + ".<br> The correct answer was " +
+                correctAnswerArray[i] + ".</p></div>"
+        }
     }
 
     return statement + "</table>"   

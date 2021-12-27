@@ -46,12 +46,12 @@ function returnScore(scorePanel) {
     document.getElementById('result-page').innerHTML = "<p id=\"end-message\">TIME\'S UP!!!</p>" +
         "<p id=\"score-message\">You scored " + score + "!</p>";
     document.getElementById('hidden-features').style.display = "none";
-    let correctionsDiv = "<h2>Incorrect Answers</h2><table></table>"
+    let correctionsDiv = "<h2>Incorrect Answers</h2><table>"
     showCorrections(correctionsDiv)
 }
 
-function showCorrections(correctionsDiv){
-    if (document.getElementById('corrections').innerHTML === correctionsDiv){
+function showCorrections(correctionsDiv) {
+    if (document.getElementById('corrections').innerHTML === correctionsDiv) {
         document.getElementById('corrections').style.display = "none";
     }
     else document.getElementById('corrections').style.display = "block";
@@ -84,7 +84,7 @@ function updateScorePanel(id) {
     let scorePanel = document.getElementById(id);
     scorePanel.innerHTML = "<p id=\"score\">Score: 0</p>";
     scorePanel.style.border = "solid 3px #0D0628";
-    scorePanel.style.display= "flex";
+    scorePanel.style.display = "flex";
     scorePanel.style.padding = "10px 10px";
 }
 
@@ -107,8 +107,11 @@ function correctAnswerCounter(imageArray, correctAnswers, totalScore, answer) {
 }
 
 function checkValidAnswer(imageArray, correctAnswers, totalScore, answer) {
-    let textAlert = document.getElementById("enter-text-alert")
+    let textAlert = document.getElementById("enter-text-alert");
     if (this.answer.value === "") {
+        textAlert.style.display = "block";
+    }
+    else if (this.answer.value !== "1" && this.answer.value !== "2") {
         textAlert.style.display = "block";
     }
     else {
@@ -131,10 +134,10 @@ function clickWhenPressEnter(id) {
             // Trigger the button element with a click
             document.getElementById("submit-button").click();
         }
-    }); 
+    });
 }
 
-function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
+function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
     if(incorrectAnswerArray.length === 0){
         statement +=  "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
     }
@@ -146,30 +149,32 @@ function returnCorrections(statement, correctImageArray, incorrectAnswerArray, c
                 correctAnswerArray[i] + ".</p></div>"
         }
     }
-
-    return statement + "</table>"   
+    
+    return statement;
 }
 
-function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    if(answer !== correctAnswers[imageFile] && answer !== ""){
+function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
+    if (answer !== correctAnswers[imageFile] && answer !== "") {
         correctImageArray.push(imageFile);
         incorrectAnswerArray.push(answer);
         correctAnswerArray.push(correctAnswers[imageFile])
     }
 
-    let statement = "<h2>Incorrect Answers</h2><table>"
+    
+    let statement = "<h2>Incorrect Answers</h2>"
+
     return returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray)
 }
 
-function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    
-    document.getElementById("submit-button").onclick = function(){
+function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
+
+    document.getElementById("submit-button").onclick = function () {
         let answer = document.getElementById("answer").value
         let imageFile = document.getElementById("note-image").alt
-        totalScore = checkValidAnswer(imageArray, correctAnswers, totalScore, answer)   
-        let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile, 
+        totalScore = checkValidAnswer(imageArray, correctAnswers, totalScore, answer)
+        let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile,
             correctImageArray, incorrectAnswerArray, correctAnswerArray)
-        
+
         document.getElementById('corrections').innerHTML = incorrectAnswers
     }
 }
@@ -207,7 +212,7 @@ async function fetchData(data) {
 }
 
 
-function startButtonFeatures(){
+function startButtonFeatures() {
     document.getElementById('back-button').style.display = "block";
     document.getElementById('buttons').style.display = "block";
     document.getElementById('hidden-features').style.display = "block";
@@ -216,10 +221,10 @@ function startButtonFeatures(){
 
 async function clickStartButton() {
     let imageArrayData = await fetchData("../../images.json")
-    let imageArray = imageArrayData["grade_1_notes"]
-    let correctAnswersData = await fetchData("correct_answers.json")
-    let correctAnswers = correctAnswersData["grade_1_notes"]
+    let imageArray = imageArrayData["grade_1_accidentals"]
 
+    let correctAnswersData = await fetchData("correct_answers.json")
+    let correctAnswers = correctAnswersData["grade_1_accidentals"]
     document.getElementById('timer').innerHTML = 30
     styleTimer('timer');
     startTimer();
@@ -228,13 +233,13 @@ async function clickStartButton() {
     hideStartButton("start-button");
     addInputAndImage(imageArray);
     startButtonFeatures()
-    
-    
+
+
     let totalScore = 0
     let correctImageArray = []
     let incorrectAnswerArray = []
     let correctAnswerArray = []
-    clickSubmitButton(imageArray, correctAnswers, totalScore, 
-    correctImageArray, incorrectAnswerArray, correctAnswerArray)
+    clickSubmitButton(imageArray, correctAnswers, totalScore,
+        correctImageArray, incorrectAnswerArray, correctAnswerArray)
     clickWhenPressEnter("answer")
 }
