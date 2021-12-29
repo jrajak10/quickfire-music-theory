@@ -15,6 +15,10 @@
         "grade-one-accidentals": {
             "teacher": "grade_one/teacher/accidentals.html",
             "student": "grade_one/student/accidentals.html"
+        },
+        "grade-one-key-signatures": {
+            "teacher": "grade_one/teacher/key_signatures.html",
+            "student": "grade_one/student/key_signatures.html"
         }
 
 }
