@@ -131,6 +131,16 @@
             "../../Accidentals/accidental30.png",
             "../../Accidentals/accidental31.png",
             "../../Accidentals/accidental32.png"
+        ],
+        "grade_1_key_signatures": [
+            "../../Grade 1 Key Signatures/bass_cmajor.png",
+            "../../Grade 1 Key Signatures/bass_dmajor.png",
+            "../../Grade 1 Key Signatures/bass_fmajor.png",
+            "../../Grade 1 Key Signatures/bass_gmajor.png",
+            "../../Grade 1 Key Signatures/trable_cmajor.png",
+            "../../Grade 1 Key Signatures/trable_dmajor.png",
+            "../../Grade 1 Key Signatures/treble_fmajor.png",
+            "../../Grade 1 Key Signatures/treble_gmajor.png"
         ]
     }
 }
