@@ -19,6 +19,10 @@
         "grade-one-key-signatures": {
             "teacher": "grade_one/teacher/key_signatures.html",
             "student": "grade_one/student/key_signatures.html"
+        },
+        "grade-one-tones-and-semitones": {
+            "teacher": "grade_one/teacher/tones_and_semitones.html",
+            "student": "grade_one/student/tones_and_semitones.html"
         }
 
 }
