@@ -231,6 +231,29 @@
             "../../Tones and Semitones/semitone42.png",
             "../../Tones and Semitones/semitone43.png",
             "../../Tones and Semitones/semitone44.png"
+        ],
+        "grade_1_tonic_triads": [
+            "../../Grade 1 Tonic Triads/cmaj1treble.png",
+            "../../Grade 1 Tonic Triads/cmaj2treble.png",
+            "../../Grade 1 Tonic Triads/cmajbass1.png",
+            "../../Grade 1 Tonic Triads/dmajbass1.png",
+            "../../Grade 1 Tonic Triads/dmajbass2.png",
+            "../../Grade 1 Tonic Triads/dmajtreble1.png",
+            "../../Grade 1 Tonic Triads/dmajtreble2.png",
+            "../../Grade 1 Tonic Triads/dmajtreble3.png",
+            "../../Grade 1 Tonic Triads/dmajtreble4.png",
+            "../../Grade 1 Tonic Triads/fmajbass1.png",
+            "../../Grade 1 Tonic Triads/fmajbass2.png",
+            "../../Grade 1 Tonic Triads/fmajbass3.png",
+            "../../Grade 1 Tonic Triads/fmajbass4.png",
+            "../../Grade 1 Tonic Triads/fmajtreble1.png",
+            "../../Grade 1 Tonic Triads/fmajtreble2.png",
+            "../../Grade 1 Tonic Triads/gmajbass1.png",
+            "../../Grade 1 Tonic Triads/gmajbass2.png",
+            "../../Grade 1 Tonic Triads/gmajbass3.png",
+            "../../Grade 1 Tonic Triads/gmajbass4.png",
+            "../../Grade 1 Tonic Triads/gmajtreble1.png",
+            "../../Grade 1 Tonic Triads/gmajtreble2.png"
         ]
     }
 }

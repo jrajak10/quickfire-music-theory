@@ -23,6 +23,10 @@
         "grade-one-tones-and-semitones": {
             "teacher": "grade_one/teacher/tones_and_semitones.html",
             "student": "grade_one/student/tones_and_semitones.html"
+        },
+        "grade-one-tonic-triads": {
+            "teacher": "grade_one/teacher/tonic_triads.html",
+            "student": "grade_one/student/tonic_triads.html"
         }
 
 }
