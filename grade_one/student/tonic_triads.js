@@ -93,7 +93,7 @@ function addInputAndImage(imageArray) {
         createImage(imageArray);
 
     }
-    document.getElementById("input").style.display = "block"
+    document.getElementById("input").style.display = "block";
     document.getElementById("answer").focus();
 
 }
