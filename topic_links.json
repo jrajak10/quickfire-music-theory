@@ -27,6 +27,10 @@
         "grade-one-tonic-triads": {
             "teacher": "grade_one/teacher/tonic_triads.html",
             "student": "grade_one/student/tonic_triads.html"
+        },
+        "grade-one-harmonic-intervals": {
+            "teacher": "grade_one/teacher/harmonic_intervals.html",
+            "student": "grade_one/student/harmonic_intervals.html"
         }
 
 }
