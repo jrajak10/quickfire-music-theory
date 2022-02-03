@@ -97,28 +97,38 @@ function addInputAndImage(imageArray) {
     document.getElementById("answer").focus();
 }
 
-function correctAnswerCounter(imageArray, correctAnswers, totalScore, answer) {
+function correctAnswerCounter(correctAnswers, totalScore, answer) {
     let imageFile = document.getElementById("note-image").alt
     if (correctAnswers[imageFile] === answer) {
         totalScore++
         document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
     }
-    changeImage(imageArray);
+
     return totalScore
 }
 
-function checkValidAnswer(imageArray, correctAnswers, totalScore, answer) {
+function isValidAnswer(answer){
+    let validAnswer;
+    let numberRegex = /\d/;
+    if (answer === "" || numberRegex.test(answer)) {
+        validAnswer = false;
+    }
+    else {
+        validAnswer = true;
+    }
+    return validAnswer
+}
+
+function checkValidAnswer(imageArray) {
     let textAlert = document.getElementById("enter-text-alert")
-    if (this.answer.value === "") {
+    if (!isValidAnswer(this.answer.value)) {
         textAlert.style.display = "block";
     }
     else {
         textAlert.style.display = "none";
         this.answer.value = "";
-        totalScore = correctAnswerCounter(imageArray, correctAnswers, totalScore, answer)
         changeImage(imageArray);
     }
-    return totalScore
 }
 
 function clickWhenPressEnter(id) {
@@ -135,6 +145,7 @@ function clickWhenPressEnter(id) {
     }); 
 }
 
+//returns corrections at the end of the round
 function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
     if(incorrectAnswerArray.length === 0){
         statement +=  "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
@@ -151,8 +162,9 @@ function returnCorrections(statement, correctImageArray, incorrectAnswerArray, c
     return statement + "</table>"   
 }
 
+//Saves incorrect answers, then returns the corrections at the end of the round
 function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    if(answer !== correctAnswers[imageFile] && answer !== ""){
+    if(answer !== correctAnswers[imageFile] && isValidAnswer(answer)){
         correctImageArray.push(imageFile);
         incorrectAnswerArray.push(answer);
         correctAnswerArray.push(correctAnswers[imageFile])
@@ -162,16 +174,18 @@ function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArra
     return returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray)
 }
 
+
 function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray){
     
     document.getElementById("submit-button").onclick = function(){
-        let answer = document.getElementById("answer").value
-        let imageFile = document.getElementById("note-image").alt
-        totalScore = checkValidAnswer(imageArray, correctAnswers, totalScore, answer)   
+        let answer = document.getElementById("answer").value;
+        let imageFile = document.getElementById("note-image").alt;
+        totalScore = correctAnswerCounter(correctAnswers, totalScore, answer);
+        checkValidAnswer(imageArray);
         let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile, 
-            correctImageArray, incorrectAnswerArray, correctAnswerArray)
-        
-        document.getElementById('corrections').innerHTML = incorrectAnswers
+            correctImageArray, incorrectAnswerArray, correctAnswerArray);
+        document.getElementById('corrections').innerHTML = incorrectAnswers;
+        return totalScore;
     }
 }
 
@@ -216,12 +230,12 @@ function startButtonFeatures(){
 }
 
 async function clickStartButton() {
-    let imageArrayData = await fetchData("../../images.json")
-    let imageArray = imageArrayData["grade_1_notes"]
-    let correctAnswersData = await fetchData("correct_answers.json")
-    let correctAnswers = correctAnswersData["grade_1_notes"]
+    let imageArrayData = await fetchData("../../images.json");
+    let imageArray = imageArrayData["grade_1_notes"];
+    let correctAnswersData = await fetchData("correct_answers.json");
+    let correctAnswers = correctAnswersData["grade_1_notes"];
 
-    document.getElementById('timer').innerHTML = 30
+    document.getElementById('timer').innerHTML = 30;
     styleTimer('timer');
     startTimer();
     updateScorePanel('score-panel');

@@ -104,31 +104,38 @@ function ignoreCase(answer){
     return answer;
 }
 
-function correctAnswerCounter(imageArray, correctAnswers, totalScore, answer) {
+function correctAnswerCounter(correctAnswers, totalScore, answer) {
     let imageFile = document.getElementById("note-image").alt
-    answer = ignoreCase(answer);
     if (correctAnswers[imageFile] === answer) {
         totalScore++
         document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
     }
-    changeImage(imageArray);
+
     return totalScore
 }
 
-function checkValidAnswer(imageArray, correctAnswers, totalScore, answer) {
-    let textAlert = document.getElementById("enter-text-alert")
-
+function isValidAnswer(answer){
+    let validAnswer;
     let nonAlphabeticRegex = /^[A-Za-z ]+$/;
-    if (this.answer.value === "" || answer.split(' ').length !== 2 || !nonAlphabeticRegex.test(answer)) {
+    if (answer === "" || answer.split(' ').length !== 2 || !nonAlphabeticRegex.test(answer)){ 
+        validAnswer = false;
+    }
+    else {
+        validAnswer = true;
+    }
+    return validAnswer
+}
+
+function checkValidAnswer(imageArray) {
+    let textAlert = document.getElementById("enter-text-alert")
+    if (!isValidAnswer(this.answer.value)) {
         textAlert.style.display = "block";
     }
     else {
         textAlert.style.display = "none";
         this.answer.value = "";
-        totalScore = correctAnswerCounter(imageArray, correctAnswers, totalScore, answer)
         changeImage(imageArray);
     }
-    return totalScore
 }
 
 function clickWhenPressEnter(id) {
@@ -145,6 +152,7 @@ function clickWhenPressEnter(id) {
     }); 
 }
 
+//returns corrections at the end of the round
 function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
     if(incorrectAnswerArray.length === 0){
         statement +=  "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
@@ -161,10 +169,9 @@ function returnCorrections(statement, correctImageArray, incorrectAnswerArray, c
     return statement + "</table>"   
 }
 
+//Saves incorrect answers, then returns the corrections at the end of the round
 function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    answer = ignoreCase(answer);
-    let nonAlphabeticRegex = /^[A-Za-z ]+$/;
-    if(answer !== correctAnswers[imageFile] && answer !== "" && answer.split(' ').length === 2 && nonAlphabeticRegex.test(answer)){
+    if(answer !== correctAnswers[imageFile] && isValidAnswer(answer)){
         correctImageArray.push(imageFile);
         incorrectAnswerArray.push(answer);
         correctAnswerArray.push(correctAnswers[imageFile])
@@ -174,16 +181,18 @@ function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArra
     return returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray)
 }
 
+
 function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray){
     
     document.getElementById("submit-button").onclick = function(){
-        let answer = document.getElementById("answer").value
-        let imageFile = document.getElementById("note-image").alt
-        totalScore = checkValidAnswer(imageArray, correctAnswers, totalScore, answer)   
+        let answer = document.getElementById("answer").value;
+        let imageFile = document.getElementById("note-image").alt;
+        totalScore = correctAnswerCounter(correctAnswers, totalScore, answer);
+        checkValidAnswer(imageArray);
         let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile, 
-            correctImageArray, incorrectAnswerArray, correctAnswerArray)
-        
-        document.getElementById('corrections').innerHTML = incorrectAnswers
+            correctImageArray, incorrectAnswerArray, correctAnswerArray);
+        document.getElementById('corrections').innerHTML = incorrectAnswers;
+        return totalScore;
     }
 }
 
