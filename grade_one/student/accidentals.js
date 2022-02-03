@@ -97,31 +97,40 @@ function addInputAndImage(imageArray) {
     document.getElementById("answer").focus();
 }
 
-function correctAnswerCounter(imageArray, correctAnswers, totalScore, answer) {
+function correctAnswerCounter(correctAnswers, totalScore, answer) {
     let imageFile = document.getElementById("note-image").alt
     if (correctAnswers[imageFile] === answer) {
         totalScore++
         document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
     }
-    changeImage(imageArray);
+
     return totalScore
 }
 
-function checkValidAnswer(imageArray, correctAnswers, totalScore, answer) {
-    let textAlert = document.getElementById("enter-text-alert");
-    if (this.answer.value === "") {
-        textAlert.style.display = "block";
+function isValidAnswer(answer){
+    let validAnswer;
+    if (answer === "") {
+        validAnswer = false;
     }
-    else if (this.answer.value !== "1" && this.answer.value !== "2") {
+    else if (answer !== "1" && answer !== "2") {
+        validAnswer = false;
+    }
+    else {
+        validAnswer = true;
+    }
+    return validAnswer
+}
+
+function checkValidAnswer(imageArray) {
+    let textAlert = document.getElementById("enter-text-alert")
+    if (!isValidAnswer(this.answer.value)) {
         textAlert.style.display = "block";
     }
     else {
         textAlert.style.display = "none";
         this.answer.value = "";
-        totalScore = correctAnswerCounter(imageArray, correctAnswers, totalScore, answer)
         changeImage(imageArray);
     }
-    return totalScore
 }
 
 function clickWhenPressEnter(id) {
@@ -138,7 +147,8 @@ function clickWhenPressEnter(id) {
     });
 }
 
-function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
+//returns corrections at the end of the round
+function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
     if(incorrectAnswerArray.length === 0){
         statement +=  "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
     }
@@ -150,33 +160,34 @@ function returnCorrections(statement, correctImageArray, incorrectAnswerArray, c
                 correctAnswerArray[i] + ".</p></div>"
         }
     }
-    
-    return statement;
+
+    return statement + "</table>"   
 }
 
-function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
-    if (answer !== correctAnswers[imageFile] && answer !== "") {
+//Saves incorrect answers, then returns the corrections at the end of the round
+function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray){
+    if(answer !== correctAnswers[imageFile] && isValidAnswer(answer)){
         correctImageArray.push(imageFile);
         incorrectAnswerArray.push(answer);
         correctAnswerArray.push(correctAnswers[imageFile])
     }
 
-    
-    let statement = "<h2>Incorrect Answers</h2>"
-
+    let statement = "<h2>Incorrect Answers</h2><table>"
     return returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray)
 }
 
-function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
 
-    document.getElementById("submit-button").onclick = function () {
-        let answer = document.getElementById("answer").value
-        let imageFile = document.getElementById("note-image").alt
-        totalScore = checkValidAnswer(imageArray, correctAnswers, totalScore, answer)
-        let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile,
-            correctImageArray, incorrectAnswerArray, correctAnswerArray)
-
-        document.getElementById('corrections').innerHTML = incorrectAnswers
+function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray){
+    
+    document.getElementById("submit-button").onclick = function(){
+        let answer = document.getElementById("answer").value;
+        let imageFile = document.getElementById("note-image").alt;
+        totalScore = correctAnswerCounter(correctAnswers, totalScore, answer);
+        checkValidAnswer(imageArray);
+        let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile, 
+            correctImageArray, incorrectAnswerArray, correctAnswerArray);
+        document.getElementById('corrections').innerHTML = incorrectAnswers;
+        return totalScore;
     }
 }
 
