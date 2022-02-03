@@ -265,27 +265,27 @@
             "../../Tones and Semitones/semitone44.png": "S"
         },
         "grade_1_tonic_triads": {
-                "../../Grade 1 Tonic Triads/cmaj1treble.png": "C major",
-                "../../Grade 1 Tonic Triads/cmaj2treble.png": "C major",
-                "../../Grade 1 Tonic Triads/cmajbass1.png": "C major",
-                "../../Grade 1 Tonic Triads/dmajbass1.png": "D major",
-                "../../Grade 1 Tonic Triads/dmajbass2.png": "D major",
-                "../../Grade 1 Tonic Triads/dmajtreble1.png": "D major",
-                "../../Grade 1 Tonic Triads/dmajtreble2.png": "D major",
-                "../../Grade 1 Tonic Triads/dmajtreble3.png": "D major",
-                "../../Grade 1 Tonic Triads/dmajtreble4.png": "D major",
-                "../../Grade 1 Tonic Triads/fmajbass1.png": "F major",
-                "../../Grade 1 Tonic Triads/fmajbass2.png": "F major",
-                "../../Grade 1 Tonic Triads/fmajbass3.png": "F major",
-                "../../Grade 1 Tonic Triads/fmajbass4.png": "F major",
-                "../../Grade 1 Tonic Triads/fmajtreble1.png": "F major",
-                "../../Grade 1 Tonic Triads/fmajtreble2.png": "F major",
-                "../../Grade 1 Tonic Triads/gmajbass1.png": "G major",
-                "../../Grade 1 Tonic Triads/gmajbass2.png": "G major",
-                "../../Grade 1 Tonic Triads/gmajbass3.png": "G major",
-                "../../Grade 1 Tonic Triads/gmajbass4.png": "G major",
-                "../../Grade 1 Tonic Triads/gmajtreble1.png": "G major",
-                "../../Grade 1 Tonic Triads/gmajtreble2.png": "G major"
+            "../../Grade 1 Tonic Triads/cmaj1treble.png": "C major",
+            "../../Grade 1 Tonic Triads/cmaj2treble.png": "C major",
+            "../../Grade 1 Tonic Triads/cmajbass1.png": "C major",
+            "../../Grade 1 Tonic Triads/dmajbass1.png": "D major",
+            "../../Grade 1 Tonic Triads/dmajbass2.png": "D major",
+            "../../Grade 1 Tonic Triads/dmajtreble1.png": "D major",
+            "../../Grade 1 Tonic Triads/dmajtreble2.png": "D major",
+            "../../Grade 1 Tonic Triads/dmajtreble3.png": "D major",
+            "../../Grade 1 Tonic Triads/dmajtreble4.png": "D major",
+            "../../Grade 1 Tonic Triads/fmajbass1.png": "F major",
+            "../../Grade 1 Tonic Triads/fmajbass2.png": "F major",
+            "../../Grade 1 Tonic Triads/fmajbass3.png": "F major",
+            "../../Grade 1 Tonic Triads/fmajbass4.png": "F major",
+            "../../Grade 1 Tonic Triads/fmajtreble1.png": "F major",
+            "../../Grade 1 Tonic Triads/fmajtreble2.png": "F major",
+            "../../Grade 1 Tonic Triads/gmajbass1.png": "G major",
+            "../../Grade 1 Tonic Triads/gmajbass2.png": "G major",
+            "../../Grade 1 Tonic Triads/gmajbass3.png": "G major",
+            "../../Grade 1 Tonic Triads/gmajbass4.png": "G major",
+            "../../Grade 1 Tonic Triads/gmajtreble1.png": "G major",
+            "../../Grade 1 Tonic Triads/gmajtreble2.png": "G major"
         },
         "grade_1_harmonic_intervals": {
             "../../Grade 1 Harmonic Intervals/C_bass_harmonic_interval2.png": "2nd",
@@ -402,6 +402,190 @@
             "../../Grade 1 Melodic Intervals/G_treble_interval6.png": "6th",
             "../../Grade 1 Melodic Intervals/G_treble_interval7.png": "7th",
             "../../Grade 1 Melodic Intervals/G_treble_interval8.png": "8ve"
+        },
+        "grade_1_musical_terms": {
+            "../../Grade 1 Musical Terms and Signs/8va high.png": "play an octave higher",
+            "../../Grade 1 Musical Terms and Signs/8va lower.png": "play an octave lower",
+            "../../Grade 1 Musical Terms and Signs/A tempo.png": [
+                "resume the normal speed",
+                "return to the normal speed",
+                "return to normal speed"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Accelerando.png": [
+                "gradually faster",
+                "becoming gradually faster",
+                "increase the tempo",
+                "gradually getting faster"
+            ],
+            "../../Grade 1 Musical Terms and Signs/accent.png": [
+                "accent the note",
+                "accent"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Adagio.png": [
+                "slow",
+                "slow, leisurely",
+                "at ease"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Allegretto.png": [
+                "slightly slower than allegro",
+                "slower than allegro"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Allegro.png": [
+                "fast, lively",
+                "fast",
+                "quickly"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Andante.png": [
+                "at a walking pace",
+                "walking pace"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Andantino.png": [
+                "a little slower or a little faster than andante",
+                "slightly faster than andante",
+                "little slower or little faster than andante",
+                "little faster than andante",
+                "faster than andante",
+                "quicker than andante"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Cantabile.png": "in a singing style",
+            "../../Grade 1 Musical Terms and Signs/Con.png": "with",
+            "../../Grade 1 Musical Terms and Signs/Crescendo Symbol.png": [
+                "gradually louder",
+                "crescendo"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Crescendo.png": "gradually louder",
+            "../../Grade 1 Musical Terms and Signs/Da Capo.png": "from the beginning",
+            "../../Grade 1 Musical Terms and Signs/Dal Segno.png": [
+                "repeat from dal segno sign",
+                "repeat from D.S. sign",
+                "repeat from DS sign"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Decrescendo symbol.png": [
+                "gradually softer",
+                "gradually quieter",
+                "decrescendo",
+                "diminuendo"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Decrescendo.png": [
+                "gradually softer",
+                "gradually quieter"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Diminuendo.png": [
+                "gradually softer",
+                "gradually quieter"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Dolce.png": "sweetly",
+            "../../Grade 1 Musical Terms and Signs/Fine.png": "the end",
+            "../../Grade 1 Musical Terms and Signs/forte.png": "loud",
+            "../../Grade 1 Musical Terms and Signs/fortissimo.png": "very loud",
+            "../../Grade 1 Musical Terms and Signs/forzando.png": [
+                "strong accent",
+                "sudden emphasis",
+                "forceful accent"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Largo.png": [
+                "slow and stately",
+                "broad",
+                "slow",
+                "slow tempo"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Legato.png": [
+                "smooth",
+                "smoothly"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Leggiero.png": "lightly",
+            "../../Grade 1 Musical Terms and Signs/Lento.png": [
+                "slow",
+                "slowly"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Maestoso.png": [
+                "majestically",
+                "majestic"
+            ],
+            "../../Grade 1 Musical Terms and Signs/metronome mark.png": [
+                "60 crotchet beats per minute"
+            ],
+            "../../Grade 1 Musical Terms and Signs/mezzo forte.png": "moderately loud",
+            "../../Grade 1 Musical Terms and Signs/mezzo piano.png": [
+                "moderately quiet",
+                "moderately soft"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Moderato.png": [
+                "at a moderate pace",
+                "moderate pace",
+                "moderate speed"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Note Staccato.png": [
+                "detached",
+                "staccato"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Pause.png": [
+                "pause",
+                "pause on the note"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Pesante.png": [
+                "heavy",
+                "heavily",
+                "heavy and ponderous"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Pianissimo.png": [
+                "very quiet",
+                "very soft"
+            ],
+            "../../Grade 1 Musical Terms and Signs/piano.png": [
+                "quiet",
+                "soft"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Rallentando.png": [
+                "slowing down",
+                "becoming slower",
+                "getting slower",
+                "becoming gradually slower",
+                "slow down"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Repeat Sign.png": "repeat",
+            "../../Grade 1 Musical Terms and Signs/Ritardando.png": [
+                "gradually slower",
+                "gradually slowing down"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Ritenuto.png": [
+                "slower at once",
+                "slow down at once",
+                "slowing down quickly",
+                "quickly slowing down",
+                "slow down immediately"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Scherzando.png": "playfully",
+            "../../Grade 1 Musical Terms and Signs/Scherzo.png": [
+                "a joke",
+                "jokingly"
+            ],
+            "../../Grade 1 Musical Terms and Signs/sforzando.jpeg": [
+                "sudden accent",
+                "sudden strong accent"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Slur.png": [
+                "slur",
+                "play the notes smoothly"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Staccato.png": [
+                "staccato",
+                "detatched"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Subito.png": [
+                "suddenly",
+                "immediately"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Tempo.png": [
+                "speed",
+                "time"
+            ],
+            "../../Grade 1 Musical Terms and Signs/Tranquillo.png": "quietly",
+            "../../Grade 1 Musical Terms and Signs/Vivace.png": [
+                "lively",
+                "quick",
+                "brisk"
+            ]
         }
     }
 }

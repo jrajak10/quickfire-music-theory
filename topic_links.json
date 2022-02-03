@@ -35,7 +35,12 @@
         "grade-one-melodic-intervals": {
             "teacher": "grade_one/teacher/melodic_intervals.html",
             "student": "grade_one/student/melodic_intervals.html"
+        },
+        "grade-one-musical-terms": {
+            "teacher": "grade_one/teacher/musical_terms.html",
+            "student": "grade_one/student/musical_terms.html"   
         }
+
 
 }
 }
