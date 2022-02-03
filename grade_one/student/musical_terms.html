@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quickfire Round: Musical Terms and Signs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="musical_terms.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src='musical_terms.js'></script>
+</head>
+
+<body>
+    <div id="return-buttons">
+        <a href="musical_terms.html"><button id="back-button">&#8592</button></a>
+        <a href="../../index.html"><button id="home-button"><i class="fas fa-home"></i></button></a>
+    </div>
+    <div id ="round-heading">
+        <h1>Musical Terms and Signs</h1>
+        <p>Name the correct musical terms and signs!</p>
+    </div>
+    <div id="quickfire-round-features">
+        <div id="timer"></div>
+        <div id="result-page">
+
+        </div>
+        <div id="corrections">
+
+        </div>
+        <div id="hidden-features">
+            <div id="score-panel">
+            </div>
+            <div id="image">
+            </div>
+            <div id="button-div">
+                <div id="buttons">
+                    <button id="start-button" onclick=clickStartButton()>START QUICKFIRE ROUND!!!</button>
+                </div>
+            </div>
+            <div id="input">
+                <div id="enter-text-alert">PLEASE ENTER A VALID ANSWER!</div>
+                <input type="text" id="answer" name="answer" autocomplete="off" 
+                onkeyup="this.value = this.value.toLowerCase()" required>
+                <button id="submit-button">&#x2192</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
