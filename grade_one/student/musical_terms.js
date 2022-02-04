@@ -4,7 +4,7 @@ function generateRandomArrayElement(imageArray) {
     return imageArray[randomIndex]
 }
 
-
+//removes chosen image from the array to avoid repeated images students may not know!
 function createImage(imageArray) {
     let newImage = document.createElement("IMG");
     let selectedElement = generateRandomArrayElement(imageArray)
@@ -12,18 +12,15 @@ function createImage(imageArray) {
     newImage.setAttribute("id", "note-image");
     newImage.setAttribute("alt", selectedElement);
     document.getElementById("image").appendChild(newImage);
+    let elementIndex = imageArray.indexOf(selectedElement);
+    imageArray.splice(elementIndex, 1);
 }
 
 //changes the image once tick/cross buttons are clicked
 function changeImage(imageArray) {
-    if (document.getElementById("image").childNodes.length <= 1) {
-        createImage(imageArray);
-    }
-    else {
         let note = document.getElementById("note-image")
         note.parentNode.removeChild(note);
         createImage(imageArray);
-    }
 }
 
 function hideStartButton(id) {
@@ -68,8 +65,8 @@ function createTryAgainButton(tryAgainButton) {
     document.getElementById('result-page').appendChild(tryAgainButton);
 }
 
-function tenSecondsRemaining(sec) {
-    if (sec <= 10) {
+function endTimerWarningColour(sec, imageArray) {
+    if (sec <= 10 || imageArray < 1) {
         document.getElementById("timer").style.color = "#c2002d";
         document.getElementById("timer").style.borderColor = "#c2002d";
     }
@@ -204,8 +201,7 @@ function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageA
     }
 }
 
-function endTimer(sec, timer) {
-    if (sec <= 0) {
+function endTimer(timer) {
         clearInterval(timer);
         styleEndTimer("timer");
         let scorePanel = document.getElementById("score-panel").innerHTML
@@ -213,18 +209,20 @@ function endTimer(sec, timer) {
         let tryAgainButton = document.createElement("BUTTON");
         createTryAgainButton(tryAgainButton)
         document.getElementById('back-button').style.display = "none";
-    }
 }
 
-function startTimer() {
+function startTimer(imageArray) {
     let sec = 60;
     let timer = setInterval(function () {
         sec--;
         document.getElementById('timer').innerHTML = sec;
         styleTimer('timer');
-
-        tenSecondsRemaining(sec);
-        endTimer(sec, timer);
+        
+        endTimerWarningColour(sec, imageArray);
+        if (sec <= 0 || imageArray.length < 1) {
+        endTimer(timer);
+        document.getElementById('timer').innerHTML = 0
+        }
 
     }, 1000);
 }
@@ -252,7 +250,7 @@ async function clickStartButton() {
     let correctAnswers = correctAnswersData["grade_1_musical_terms"]
     document.getElementById('timer').innerHTML = 60
     styleTimer('timer');
-    startTimer();
+    startTimer(imageArray);
     updateScorePanel('score-panel');
     generateRandomArrayElement(imageArray);
     hideStartButton("start-button");

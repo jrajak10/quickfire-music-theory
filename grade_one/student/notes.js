@@ -16,20 +16,14 @@ function createImage(imageArray) {
 
 //changes the image once tick/cross buttons are clicked
 function changeImage(imageArray) {
-    if (document.getElementById("image").childNodes.length <= 1) {
-        createImage(imageArray);
-    }
-    else {
         let note = document.getElementById("note-image")
         note.parentNode.removeChild(note);
         createImage(imageArray);
-    }
 }
 
 function hideStartButton(id) {
     let startButton = document.getElementById(id)
     startButton.parentNode.removeChild(startButton);
-
 }
 
 function styleTimer(id) {
@@ -91,7 +85,6 @@ function updateScorePanel(id) {
 function addInputAndImage(imageArray) {
     if (document.getElementById("image").childNodes.length <= 1) {
         createImage(imageArray);
-
     }
     document.getElementById("input").style.display = "block";
     document.getElementById("answer").focus();
@@ -128,6 +121,7 @@ function checkValidAnswer(imageArray) {
         textAlert.style.display = "none";
         this.answer.value = "";
         changeImage(imageArray);
+        console.log(imageArray)
     }
 }
 
