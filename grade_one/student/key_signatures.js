@@ -112,7 +112,7 @@ function correctAnswerCounter(correctAnswers, totalScore, answer) {
 function isValidAnswer(answer){
     let validAnswer;
     let nonAlphabeticRegex = /^[A-Za-z ]+$/;  
-    answer= ignoreCase(answer);  
+    answer = ignoreCase(answer);  
     if (answer === "" || answer.split(' ').length !== 2 || !nonAlphabeticRegex.test(answer) || 
     answer.split(' ')[1] !== "major") {
         validAnswer = false;
