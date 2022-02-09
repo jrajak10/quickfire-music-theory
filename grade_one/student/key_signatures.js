@@ -92,10 +92,10 @@ function addInputAndImage(imageArray) {
     document.getElementById("answer").focus();
 }
 
+//ignores the case when the answer says "major"
 function ignoreCase(answer){
-    let letter = answer.split(' ')[0];
-    let ignoreCase = answer.split(' ')[1].toLowerCase();
-    answer = letter + ' ' + ignoreCase;
+    let ignoreCaseMajor = answer.split(' ')[1].toLowerCase();
+    answer = answer[0] + ' ' + ignoreCaseMajor; 
     return answer;
 }
 
@@ -111,8 +111,10 @@ function correctAnswerCounter(correctAnswers, totalScore, answer) {
 
 function isValidAnswer(answer){
     let validAnswer;
-    let nonAlphabeticRegex = /^[A-Za-z ]+$/;
-    if (answer === "" || answer.split(' ').length !== 2 || !nonAlphabeticRegex.test(answer)){ 
+    let nonAlphabeticRegex = /^[A-Za-z ]+$/;  
+    answer = ignoreCase(answer);  
+    if (answer === "" || answer.split(' ').length !== 2 || !nonAlphabeticRegex.test(answer) || 
+    answer.split(' ')[1] !== "major") {
         validAnswer = false;
     }
     else {
@@ -181,6 +183,7 @@ function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageA
     
     document.getElementById("submit-button").onclick = function(){
         let answer = document.getElementById("answer").value;
+        answer = ignoreCase(answer); 
         let imageFile = document.getElementById("note-image").alt;
         totalScore = correctAnswerCounter(correctAnswers, totalScore, answer);
         checkValidAnswer(imageArray);
