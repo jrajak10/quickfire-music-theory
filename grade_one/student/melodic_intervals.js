@@ -94,7 +94,8 @@ function addInputAndImage(imageArray) {
 
 function correctAnswerCounter(correctAnswers, totalScore, answer) {
     let imageFile = document.getElementById("note-image").alt
-    if (correctAnswers[imageFile] === answer) {
+    if (typeof (correctAnswers[imageFile]) === "object" && correctAnswers[imageFile].indexOf(answer) !== -1 ||
+        correctAnswers[imageFile] === answer) {
         totalScore++
         document.getElementById("score-panel").innerHTML = `<p id="score">Score: ${totalScore}</p>`
     }
@@ -143,23 +144,34 @@ function clickWhenPressEnter(id) {
 //returns corrections at the end of the round
 function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
     if(incorrectAnswerArray.length === 0){
-        statement +=  "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
+        statement += "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
     }
     else {
         for (let i = 0; i < correctImageArray.length; i++) {
-            statement += "<div class=\"correction\"><img class=\"correct-image\" src=\"" + correctImageArray[i] +
-                "\"><p class=\"answer-description\">You said "
-                + incorrectAnswerArray[i] + ".<br> The correct answer was " +
-                correctAnswerArray[i] + ".</p></div>"
+            let correctAnswer = correctAnswerArray[i]
+            if (typeof (correctAnswer) === "string") {
+                statement += "<div class=\"correction\"><img class=\"correct-image\" src=\"" + correctImageArray[i] +
+                    "\"><p class=\"answer-description\">You said "
+                    + incorrectAnswerArray[i] + ".<br> The correct answer was " +
+                    correctAnswer + ".</p></div>"
+            }
+            else {
+                statement += "<div class=\"correction\"><img class=\"correct-image\" src=\"" + correctImageArray[i] +
+                    "\"><p class=\"answer-description\">You said "
+                    + incorrectAnswerArray[i] + ".<br> The correct answer was " +
+                    correctAnswer[0] + ".</p></div>"
+            }
         }
     }
 
-    return statement + "</table>"   
+    return statement + "</table>"
 }
 
 //Saves incorrect answers, then returns the corrections at the end of the round
 function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    if(answer !== correctAnswers[imageFile] && isValidAnswer(answer)){
+    let correctAnswer = correctAnswers[imageFile];
+    if (answer !== correctAnswer && typeof (correctAnswer) === "string" ||
+        correctAnswer.indexOf(answer) === -1 && typeof (correctAnswer) === "object") {
         correctImageArray.push(imageFile);
         incorrectAnswerArray.push(answer);
         correctAnswerArray.push(correctAnswers[imageFile])
