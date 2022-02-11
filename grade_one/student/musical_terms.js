@@ -177,7 +177,7 @@ function returnCorrections(statement, correctImageArray, incorrectAnswerArray, c
 function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
     let correctAnswer = correctAnswers[imageFile];
     if (answer !== correctAnswer && typeof (correctAnswer) === "string" ||
-        correctAnswers[imageFile].indexOf(answer) === -1 && typeof (correctAnswer) === "object") {
+        correctAnswer.indexOf(answer) === -1 && typeof (correctAnswer) === "object") {
         correctImageArray.push(imageFile);
         incorrectAnswerArray.push(answer);
         correctAnswerArray.push(correctAnswers[imageFile])
