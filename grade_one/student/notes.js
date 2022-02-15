@@ -16,9 +16,9 @@ function createImage(imageArray) {
 
 //changes the image once tick/cross buttons are clicked
 function changeImage(imageArray) {
-        let note = document.getElementById("note-image")
-        note.parentNode.removeChild(note);
-        createImage(imageArray);
+    let note = document.getElementById("note-image")
+    note.parentNode.removeChild(note);
+    createImage(imageArray);
 }
 
 function hideStartButton(id) {
@@ -44,8 +44,8 @@ function returnScore(scorePanel) {
     showCorrections(correctionsDiv)
 }
 
-function showCorrections(correctionsDiv){
-    if (document.getElementById('corrections').innerHTML === correctionsDiv){
+function showCorrections(correctionsDiv) {
+    if (document.getElementById('corrections').innerHTML === correctionsDiv) {
         document.getElementById('corrections').style.display = "none";
     }
     else document.getElementById('corrections').style.display = "block";
@@ -78,7 +78,7 @@ function updateScorePanel(id) {
     let scorePanel = document.getElementById(id);
     scorePanel.innerHTML = "<p id=\"score\">Score: 0</p>";
     scorePanel.style.border = "solid 3px #0D0628";
-    scorePanel.style.display= "flex";
+    scorePanel.style.display = "flex";
     scorePanel.style.padding = "10px 10px";
 }
 
@@ -88,6 +88,16 @@ function addInputAndImage(imageArray) {
     }
     document.getElementById("input").style.display = "block";
     document.getElementById("answer").focus();
+}
+
+//ignores the case when the answer says "sharp" or "flat"
+function ignoreCase(answer) {
+    if (answer.split(' ').length > 1) {
+        let ignoreCaseValue = answer.split(' ')[1].toLowerCase();
+        answer = answer[0] + ' ' + ignoreCaseValue;
+    }
+
+    return answer;
 }
 
 function correctAnswerCounter(correctAnswers, totalScore, answer) {
@@ -100,11 +110,18 @@ function correctAnswerCounter(correctAnswers, totalScore, answer) {
     return totalScore
 }
 
-function isValidAnswer(answer){
+function isValidAnswer(answer) {
     let validAnswer;
-    let numberRegex = /\d/;
-    if (answer === "" || numberRegex.test(answer)) {
+    let nonAlphabeticRegex = /^[A-Za-z ]+$/;
+    answer = ignoreCase(answer);
+    if (answer === "" || answer.split(' ').length > 2 || !nonAlphabeticRegex.test(answer)) {
         validAnswer = false;
+    }
+    else if (answer.split(' ').length === 2) {
+        if (answer.split(' ')[1] !== "sharp" && answer.split(' ')[1] !== "flat") {
+            validAnswer = false;
+        }
+        else validAnswer = true;
     }
     else {
         validAnswer = true;
@@ -121,7 +138,6 @@ function checkValidAnswer(imageArray) {
         textAlert.style.display = "none";
         this.answer.value = "";
         changeImage(imageArray);
-        console.log(imageArray)
     }
 }
 
@@ -136,13 +152,13 @@ function clickWhenPressEnter(id) {
             // Trigger the button element with a click
             document.getElementById("submit-button").click();
         }
-    }); 
+    });
 }
 
 //returns corrections at the end of the round
-function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    if(incorrectAnswerArray.length === 0){
-        statement +=  "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
+function returnCorrections(statement, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
+    if (incorrectAnswerArray.length === 0) {
+        statement += "<p class=\"answer-description\">Congratulations!<br>You had no incorrect answers!!! </p>"
     }
     else {
         for (let i = 0; i < correctImageArray.length; i++) {
@@ -153,12 +169,12 @@ function returnCorrections(statement, correctImageArray, incorrectAnswerArray, c
         }
     }
 
-    return statement + "</table>"   
+    return statement + "</table>"
 }
 
 //Saves incorrect answers, then returns the corrections at the end of the round
-function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    if(answer !== correctAnswers[imageFile] && isValidAnswer(answer)){
+function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
+    if (answer !== correctAnswers[imageFile] && isValidAnswer(answer)) {
         correctImageArray.push(imageFile);
         incorrectAnswerArray.push(answer);
         correctAnswerArray.push(correctAnswers[imageFile])
@@ -169,14 +185,15 @@ function saveIncorrectAnswer(answer, correctAnswers, imageFile, correctImageArra
 }
 
 
-function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray){
-    
-    document.getElementById("submit-button").onclick = function(){
+function clickSubmitButton(imageArray, correctAnswers, totalScore, correctImageArray, incorrectAnswerArray, correctAnswerArray) {
+
+    document.getElementById("submit-button").onclick = function () {
         let answer = document.getElementById("answer").value;
+        answer = ignoreCase(answer);
         let imageFile = document.getElementById("note-image").alt;
         totalScore = correctAnswerCounter(correctAnswers, totalScore, answer);
         checkValidAnswer(imageArray);
-        let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile, 
+        let incorrectAnswers = saveIncorrectAnswer(answer, correctAnswers, imageFile,
             correctImageArray, incorrectAnswerArray, correctAnswerArray);
         document.getElementById('corrections').innerHTML = incorrectAnswers;
         return totalScore;
@@ -216,7 +233,7 @@ async function fetchData(data) {
 }
 
 
-function startButtonFeatures(){
+function startButtonFeatures() {
     document.getElementById('back-button').style.display = "block";
     document.getElementById('buttons').style.display = "block";
     document.getElementById('hidden-features').style.display = "block";
@@ -237,13 +254,13 @@ async function clickStartButton() {
     hideStartButton("start-button");
     addInputAndImage(imageArray);
     startButtonFeatures()
-    
-    
+
+
     let totalScore = 0
     let correctImageArray = []
     let incorrectAnswerArray = []
     let correctAnswerArray = []
-    clickSubmitButton(imageArray, correctAnswers, totalScore, 
-    correctImageArray, incorrectAnswerArray, correctAnswerArray)
+    clickSubmitButton(imageArray, correctAnswers, totalScore,
+        correctImageArray, incorrectAnswerArray, correctAnswerArray)
     clickWhenPressEnter("answer")
 }

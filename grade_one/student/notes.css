@@ -50,9 +50,13 @@ a{
     vertical-align: middle;
 }
 
+input{
+    height: 40px;
+}
+
 input[type="text"] {
-    font-size: 36px;
-    width: 100px;
+    font-size: 28px;
+    width: 150px;
     text-align: center;
 }
 
@@ -131,7 +135,7 @@ h1{
 
 p {
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
     margin: 0px 50px;
 }
 
@@ -202,11 +206,18 @@ button:active {
     background-color: #9093b0;
 }
 
+@media (max-width: 300px){
+    p{
+        font-size: 14px;
+    }
+} 
+
 @media (min-width: 481px) {
 
     #round-heading{
-        margin: 0px 60px;
+        margin: 0px 50px;
     }
+
     
     #start-button {
         width: 200px;
@@ -256,7 +267,6 @@ button:active {
         width: 40px;
     }
     
-
     .correct-image{
         height: 100px;
         width: 100px;
@@ -283,6 +293,15 @@ button:active {
 }
 
 @media (min-width: 769px) {
+
+    #round-heading{
+        margin: 0px 200px;
+    }
+
+    p{
+        font-size: 20px;
+    }
+
     button:hover {
         border-width: 3px;
         cursor: pointer;
@@ -350,5 +369,15 @@ button:active {
         margin-left: 400px;
         margin-right: 400px;
         padding: 30px 16px;
+    }
+
+    input{
+        height: 50px;
+    }
+    
+    input[type="text"] {
+        font-size: 32px;
+        width: 175px;
+        text-align: center;
     }
 }
