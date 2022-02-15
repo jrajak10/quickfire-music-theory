@@ -50,9 +50,13 @@ a{
     vertical-align: middle;
 }
 
+input{
+    height: 40px;
+}
+
 input[type="text"] {
-    font-size: 36px;
-    width: 100px;
+    font-size: 28px;
+    width: 150px;
     text-align: center;
 }
 
@@ -350,5 +354,15 @@ button:active {
         margin-left: 400px;
         margin-right: 400px;
         padding: 30px 16px;
+    }
+
+    input{
+        height: 50px;
+    }
+    
+    input[type="text"] {
+        font-size: 32px;
+        width: 175px;
+        text-align: center;
     }
 }
